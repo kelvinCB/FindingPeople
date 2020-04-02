@@ -182,12 +182,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Correo del Familiar"/>
+            <Property name="text" type="java.lang.String" value="Correo a contactar"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Celular del familiar"/>
+            <Property name="text" type="java.lang.String" value="Celular a contactar"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">

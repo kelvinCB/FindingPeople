@@ -71,9 +71,9 @@ public class UploadPeople extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre");
 
-        jLabel3.setText("Correo del Familiar");
+        jLabel3.setText("Correo a contactar");
 
-        jLabel4.setText("Celular del familiar");
+        jLabel4.setText("Celular a contactar");
 
         jLabel5.setText("Sexo");
 

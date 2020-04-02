@@ -38,7 +38,6 @@ public class Login extends javax.swing.JFrame {
         setImagenJLabel(label_IconoUser, "Images/UserTxtUser.png");
         setImagenJLabel(label_IconoPassword, "Images/PasswordImage.png");
         setImagenJLabel(label_IconoSignIn, "Images/SignInIcon.png");
-        //setImagenJLabel(label_IconoSignIn,"Images/SignInImage.png");
 
     }
 
@@ -51,6 +50,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup_RegisterSexo = new javax.swing.ButtonGroup();
         panel_ContendorLogin = new javax.swing.JPanel();
         panel_EsteticaLogin = new javax.swing.JPanel();
         panel_ImageLogin = new javax.swing.JPanel();
@@ -77,12 +77,26 @@ public class Login extends javax.swing.JFrame {
         label_IconoPassword = new javax.swing.JLabel();
         label_ValidacionesTxt = new javax.swing.JLabel();
         button_RegisterHere = new javax.swing.JButton();
-        button_RegisterHere1 = new javax.swing.JButton();
+        button_ForgotPassword = new javax.swing.JButton();
         panel_Register = new javax.swing.JPanel();
-        label_IconoSignIn1 = new javax.swing.JLabel();
-        label_SignIn1 = new javax.swing.JLabel();
-        input_User1 = new javax.swing.JTextField();
-        input_Password1 = new javax.swing.JPasswordField();
+        label_IconoRegister = new javax.swing.JLabel();
+        label_Register = new javax.swing.JLabel();
+        input_UserRegister = new javax.swing.JTextField();
+        input_PasswordRegister = new javax.swing.JPasswordField();
+        input_UserRegister1 = new javax.swing.JTextField();
+        input_PasswordRegister1 = new javax.swing.JPasswordField();
+        input_UserRegister2 = new javax.swing.JTextField();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        label_WarningsRegister = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        radionbutton_Mujer = new javax.swing.JRadioButton();
+        label_DontHaveAccount1 = new javax.swing.JLabel();
+        button_RegisterHere2 = new javax.swing.JButton();
+        button_Register = new rojeru_san.RSButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,10 +250,15 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        button_RegisterHere1.setBackground(new java.awt.Color(37, 47, 65));
-        button_RegisterHere1.setForeground(new java.awt.Color(255, 255, 255));
-        button_RegisterHere1.setText("Forgot Password?");
-        button_RegisterHere1.setBorder(null);
+        button_ForgotPassword.setBackground(new java.awt.Color(37, 47, 65));
+        button_ForgotPassword.setForeground(new java.awt.Color(255, 255, 255));
+        button_ForgotPassword.setText("Forgot Password?");
+        button_ForgotPassword.setBorder(null);
+        button_ForgotPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_ForgotPasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_LoginLayout = new javax.swing.GroupLayout(panel_Login);
         panel_Login.setLayout(panel_LoginLayout);
@@ -249,7 +268,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(check_RemenberMe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(button_RegisterHere1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_ForgotPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_LoginLayout.createSequentialGroup()
                 .addContainerGap(53, Short.MAX_VALUE)
@@ -298,7 +317,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button_RegisterHere1)
+                    .addComponent(button_ForgotPassword)
                     .addComponent(check_RemenberMe))
                 .addGap(40, 40, 40)
                 .addGroup(panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -334,39 +353,169 @@ public class Login extends javax.swing.JFrame {
 
         panel_Register.setBackground(new java.awt.Color(37, 47, 65));
 
-        label_SignIn1.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
-        label_SignIn1.setForeground(new java.awt.Color(204, 204, 204));
-        label_SignIn1.setText("Sign In");
+        label_Register.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        label_Register.setForeground(new java.awt.Color(255, 255, 255));
+        label_Register.setText("Register");
+
+        jRadioButton2.setBackground(new java.awt.Color(37, 47, 65));
+        buttonGroup_RegisterSexo.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setText("Hombre");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+
+        label_WarningsRegister.setForeground(new java.awt.Color(255, 0, 0));
+        label_WarningsRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Full Name");
+
+        radionbutton_Mujer.setBackground(new java.awt.Color(37, 47, 65));
+        radionbutton_Mujer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        radionbutton_Mujer.setForeground(new java.awt.Color(255, 255, 255));
+        radionbutton_Mujer.setText("Mujer");
+        radionbutton_Mujer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radionbutton_MujerActionPerformed(evt);
+            }
+        });
+
+        label_DontHaveAccount1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        label_DontHaveAccount1.setForeground(new java.awt.Color(255, 255, 255));
+        label_DontHaveAccount1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_DontHaveAccount1.setText("Already have an account?");
+
+        button_RegisterHere2.setBackground(new java.awt.Color(37, 47, 65));
+        button_RegisterHere2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        button_RegisterHere2.setForeground(new java.awt.Color(255, 255, 255));
+        button_RegisterHere2.setText("LOGIN");
+        button_RegisterHere2.setBorder(null);
+        button_RegisterHere2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_RegisterHere2ActionPerformed(evt);
+            }
+        });
+
+        button_Register.setBackground(new java.awt.Color(37, 47, 65));
+        button_Register.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(37, 25, 97), new java.awt.Color(37, 25, 97)));
+        button_Register.setText("Register");
+        button_Register.setColorHover(new java.awt.Color(37, 50, 65));
+        button_Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_RegisterActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("User");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Password");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Confirm Password");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("Phone");
 
         javax.swing.GroupLayout panel_RegisterLayout = new javax.swing.GroupLayout(panel_Register);
         panel_Register.setLayout(panel_RegisterLayout);
         panel_RegisterLayout.setHorizontalGroup(
             panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_RegisterLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(161, 161, 161)
+                .addComponent(label_Register)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_RegisterLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_IconoRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_RegisterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel_RegisterLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(label_IconoSignIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panel_RegisterLayout.createSequentialGroup()
+                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(radionbutton_Mujer, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(input_UserRegister2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                            .addComponent(input_UserRegister1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(input_UserRegister, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(input_PasswordRegister, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(input_PasswordRegister1, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(panel_RegisterLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(label_SignIn1))
-                    .addComponent(input_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(input_Password1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(label_DontHaveAccount1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(button_RegisterHere2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_RegisterLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(label_WarningsRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(button_Register, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE))))
+                .addGap(20, 20, 20))
         );
         panel_RegisterLayout.setVerticalGroup(
             panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_RegisterLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(label_IconoSignIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(label_SignIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(label_IconoRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(label_Register, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(input_UserRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(input_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(input_Password1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(input_UserRegister1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(input_PasswordRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(input_PasswordRegister1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(input_UserRegister2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton2)
+                    .addComponent(radionbutton_Mujer))
+                .addGap(18, 18, 18)
+                .addComponent(label_WarningsRegister)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(button_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label_DontHaveAccount1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_RegisterHere2))
+                .addContainerGap())
         );
 
         panel_InfoLogin.add(panel_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 530));
@@ -410,8 +559,33 @@ public class Login extends javax.swing.JFrame {
 
     private void button_RegisterHereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_RegisterHereActionPerformed
         panel_Login.hide();
+        setImagenJLabel(label_IconoRegister, "Images/SignInIcon.png");
         panel_Register.show();
+        
     }//GEN-LAST:event_button_RegisterHereActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void radionbutton_MujerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radionbutton_MujerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radionbutton_MujerActionPerformed
+
+    private void button_RegisterHere2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_RegisterHere2ActionPerformed
+        panel_Register.hide();
+        panel_Login.show();
+    }//GEN-LAST:event_button_RegisterHere2ActionPerformed
+
+    private void button_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_RegisterActionPerformed
+        
+        label_WarningsRegister.setText("Errores maniga");
+        
+    }//GEN-LAST:event_button_RegisterActionPerformed
+
+    private void button_ForgotPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ForgotPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_ForgotPasswordActionPerformed
 
     private void setImagenJLabel(JLabel label, String ruta) {
 
@@ -515,26 +689,40 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup_RegisterSexo;
+    private javax.swing.JButton button_ForgotPassword;
     private rojeru_san.RSButton button_Login;
+    private rojeru_san.RSButton button_Register;
     private javax.swing.JButton button_RegisterHere;
-    private javax.swing.JButton button_RegisterHere1;
+    private javax.swing.JButton button_RegisterHere2;
     private javax.swing.JCheckBox check_RemenberMe;
     private javax.swing.JPasswordField input_Password;
-    private javax.swing.JPasswordField input_Password1;
+    private javax.swing.JPasswordField input_PasswordRegister;
+    private javax.swing.JPasswordField input_PasswordRegister1;
     private javax.swing.JTextField input_User;
-    private javax.swing.JTextField input_User1;
+    private javax.swing.JTextField input_UserRegister;
+    private javax.swing.JTextField input_UserRegister1;
+    private javax.swing.JTextField input_UserRegister2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel label_DontHaveAccount;
+    private javax.swing.JLabel label_DontHaveAccount1;
     private javax.swing.JLabel label_IconoPassword;
+    private javax.swing.JLabel label_IconoRegister;
     private javax.swing.JLabel label_IconoSignIn;
-    private javax.swing.JLabel label_IconoSignIn1;
     private javax.swing.JLabel label_IconoUser;
     private javax.swing.JLabel label_LoginImage;
     private javax.swing.JLabel label_ProyectName;
+    private javax.swing.JLabel label_Register;
     private javax.swing.JLabel label_SignIn;
-    private javax.swing.JLabel label_SignIn1;
     private javax.swing.JLabel label_ValidacionesTxt;
+    private javax.swing.JLabel label_WarningsRegister;
     private javax.swing.JLabel lblCargando;
     private javax.swing.JLabel lblCargando1;
     private javax.swing.JLabel lblPassword;
@@ -546,6 +734,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel panel_Login;
     private javax.swing.JPanel panel_Register;
     private rojerusan.componentes.RSProgressMaterial rSProgressMaterial1;
+    private javax.swing.JRadioButton radionbutton_Mujer;
     private javax.swing.JSeparator separator_Separator1;
     // End of variables declaration//GEN-END:variables
 }
