@@ -8,7 +8,10 @@ package findingpeople;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,7 +24,24 @@ public class Reports extends javax.swing.JFrame {
      */
     public Reports() {
         initComponents();
-        setTitle("Finding People CO.");
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        this.addWindowListener(new WindowAdapter(){
+                
+                @Override
+                public void windowClosing(WindowEvent e){
+                    int x = JOptionPane.showConfirmDialog(null, "¿Realmemte quiere salir de ReLiz System?",
+                                                          "Cerrar",
+                                                          JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    if(x == JOptionPane.YES_OPTION){
+                        e.getWindow().dispose();
+                        System.out.println("Cerrar");
+                    }else{
+                        System.out.println("Seguimo'");
+                    }
+                }
+        });
+        setTitle("KeLiz System - Reportes");
         this.setResizable(false);
         setFrameCenter(this);
         panel_PersonasEncontradas.hide();
@@ -54,8 +74,8 @@ public class Reports extends javax.swing.JFrame {
 
         panel_Titulos.setBackground(new java.awt.Color(0, 0, 204));
 
-        button_PersonasDesaparecidas.setBackground(new java.awt.Color(0, 0, 204));
-        button_PersonasDesaparecidas.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        button_PersonasDesaparecidas.setBackground(new java.awt.Color(4, 96, 194));
+        button_PersonasDesaparecidas.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         button_PersonasDesaparecidas.setForeground(new java.awt.Color(255, 255, 255));
         button_PersonasDesaparecidas.setText("Personas Desaparecidas");
         button_PersonasDesaparecidas.setBorder(null);
@@ -65,8 +85,8 @@ public class Reports extends javax.swing.JFrame {
             }
         });
 
-        button_PersonasEncontradas.setBackground(new java.awt.Color(97, 212, 195));
-        button_PersonasEncontradas.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        button_PersonasEncontradas.setBackground(new java.awt.Color(0, 204, 102));
+        button_PersonasEncontradas.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         button_PersonasEncontradas.setForeground(new java.awt.Color(255, 255, 255));
         button_PersonasEncontradas.setText("Personas Encontradas");
         button_PersonasEncontradas.setBorder(null);
@@ -93,10 +113,13 @@ public class Reports extends javax.swing.JFrame {
 
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel_PersonasDesaparecidas.setBackground(new java.awt.Color(255, 0, 0));
+        panel_PersonasDesaparecidas.setBackground(new java.awt.Color(37, 47, 65));
 
         label_PersonasDesaparecidas.setText("Aqui van las personas Desaparecidas");
 
+        button_MenuPrincipalEnPersonasDesaparecidas.setBackground(new java.awt.Color(4, 96, 194));
+        button_MenuPrincipalEnPersonasDesaparecidas.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        button_MenuPrincipalEnPersonasDesaparecidas.setForeground(new java.awt.Color(225, 225, 225));
         button_MenuPrincipalEnPersonasDesaparecidas.setText("Menu Principal");
         button_MenuPrincipalEnPersonasDesaparecidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,13 +132,14 @@ public class Reports extends javax.swing.JFrame {
         panel_PersonasDesaparecidasLayout.setHorizontalGroup(
             panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_PersonasDesaparecidasLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(label_PersonasDesaparecidas, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(293, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasDesaparecidasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(button_MenuPrincipalEnPersonasDesaparecidas)
-                .addContainerGap())
+                .addContainerGap(302, Short.MAX_VALUE)
+                .addGroup(panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasDesaparecidasLayout.createSequentialGroup()
+                        .addComponent(button_MenuPrincipalEnPersonasDesaparecidas)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasDesaparecidasLayout.createSequentialGroup()
+                        .addComponent(label_PersonasDesaparecidas, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(214, 214, 214))))
         );
         panel_PersonasDesaparecidasLayout.setVerticalGroup(
             panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,11 +153,14 @@ public class Reports extends javax.swing.JFrame {
 
         jLayeredPane1.add(panel_PersonasDesaparecidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 809, -1));
 
-        panel_PersonasEncontradas.setBackground(new java.awt.Color(0, 204, 0));
+        panel_PersonasEncontradas.setBackground(new java.awt.Color(37, 47, 65));
 
         label_PersonasEncontradas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_PersonasEncontradas.setText("Aqui van las personas Encontradas");
 
+        button_MenuPrincipalEnPersonasEncontradas.setBackground(new java.awt.Color(4, 96, 194));
+        button_MenuPrincipalEnPersonasEncontradas.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        button_MenuPrincipalEnPersonasEncontradas.setForeground(new java.awt.Color(225, 225, 225));
         button_MenuPrincipalEnPersonasEncontradas.setText("Menu Principal");
         button_MenuPrincipalEnPersonasEncontradas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +178,7 @@ public class Reports extends javax.swing.JFrame {
                 .addContainerGap(271, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasEncontradasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(button_MenuPrincipalEnPersonasEncontradas)
+                .addComponent(button_MenuPrincipalEnPersonasEncontradas, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panel_PersonasEncontradasLayout.setVerticalGroup(

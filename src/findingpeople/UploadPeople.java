@@ -7,7 +7,10 @@ package findingpeople;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,8 +23,25 @@ public class UploadPeople extends javax.swing.JFrame {
      */
     public UploadPeople() {
         initComponents();
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        this.addWindowListener(new WindowAdapter(){
+                
+                @Override
+                public void windowClosing(WindowEvent e){
+                    int x = JOptionPane.showConfirmDialog(null, "¿¿Realmemte quiere salir de ReLiz System?",
+                                                          "Cerrar",
+                                                          JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    if(x == JOptionPane.YES_OPTION){
+                        e.getWindow().dispose();
+                        System.out.println("Cerrar");
+                    }else{
+                        System.out.println("Seguimo'");
+                    }
+                }
+        });
         setFrameCenter(this);
-        setTitle("Finding People CO.");
+        setTitle("KeLiz System - Registro de Desaparecidos");
         setResizable(false);
     }
 
@@ -36,79 +56,158 @@ public class UploadPeople extends javax.swing.JFrame {
 
         buttonGroup_Sexo = new javax.swing.ButtonGroup();
         panel_FondoUploadPeople = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        Mujer = new javax.swing.JRadioButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        label_RegistroDesaparecidos = new javax.swing.JLabel();
+        button_MenuPrincipal = new javax.swing.JButton();
+        input_Nombre = new javax.swing.JTextField();
+        lblNombre = new javax.swing.JLabel();
+        label_Correo = new javax.swing.JLabel();
+        label_Celular = new javax.swing.JLabel();
+        label_Sexo = new javax.swing.JLabel();
+        radiobutton_Hombre = new javax.swing.JRadioButton();
+        radiobutton_Mujer = new javax.swing.JRadioButton();
+        button_SubirFoto = new javax.swing.JButton();
+        label_Foto = new javax.swing.JLabel();
+        input_Correo = new javax.swing.JTextField();
+        input_Celular = new javax.swing.JTextField();
+        button_Registro = new javax.swing.JButton();
+        button_TomarFoto = new javax.swing.JButton();
+        label_PersonaDesaparecida = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panel_FondoUploadPeople.setBackground(new java.awt.Color(102, 255, 255));
+        panel_FondoUploadPeople.setBackground(new java.awt.Color(37, 47, 65));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de Persona Desaparecida");
+        label_RegistroDesaparecidos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        label_RegistroDesaparecidos.setForeground(new java.awt.Color(255, 255, 255));
+        label_RegistroDesaparecidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_RegistroDesaparecidos.setText("Registro de Persona Desaparecida");
 
-        jButton1.setText("Menu Principal");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        button_MenuPrincipal.setBackground(new java.awt.Color(4, 96, 194));
+        button_MenuPrincipal.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        button_MenuPrincipal.setForeground(new java.awt.Color(225, 225, 225));
+        button_MenuPrincipal.setText("Menu Principal");
+        button_MenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                button_MenuPrincipalActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Nombre");
-
-        jLabel3.setText("Correo a contactar");
-
-        jLabel4.setText("Celular a contactar");
-
-        jLabel5.setText("Sexo");
-
-        jRadioButton1.setBackground(new java.awt.Color(102, 255, 255));
-        buttonGroup_Sexo.add(jRadioButton1);
-        jRadioButton1.setText("Hombre");
-
-        Mujer.setBackground(new java.awt.Color(102, 255, 255));
-        buttonGroup_Sexo.add(Mujer);
-        Mujer.setText("Mujer");
-
-        jButton3.setText("Subir Foto");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        input_Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                input_NombreActionPerformed(evt);
+            }
+        });
+        input_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                input_NombreKeyReleased(evt);
             }
         });
 
-        jLabel6.setText("Foto");
+        lblNombre.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre.setText("Nombre");
 
-        jButton4.setText("Registrar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        label_Correo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label_Correo.setForeground(new java.awt.Color(255, 255, 255));
+        label_Correo.setText("Correo a contactar");
+
+        label_Celular.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label_Celular.setForeground(new java.awt.Color(255, 255, 255));
+        label_Celular.setText("Celular a contactar");
+
+        label_Sexo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label_Sexo.setForeground(new java.awt.Color(255, 255, 255));
+        label_Sexo.setText("Sexo");
+
+        radiobutton_Hombre.setBackground(new java.awt.Color(37, 47, 65));
+        buttonGroup_Sexo.add(radiobutton_Hombre);
+        radiobutton_Hombre.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        radiobutton_Hombre.setForeground(new java.awt.Color(255, 255, 255));
+        radiobutton_Hombre.setText("Hombre");
+
+        radiobutton_Mujer.setBackground(new java.awt.Color(37, 47, 65));
+        buttonGroup_Sexo.add(radiobutton_Mujer);
+        radiobutton_Mujer.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        radiobutton_Mujer.setForeground(new java.awt.Color(255, 255, 255));
+        radiobutton_Mujer.setText("Mujer");
+
+        button_SubirFoto.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        button_SubirFoto.setText("Subir Foto");
+        button_SubirFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                button_SubirFotoActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Tomar Foto");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        label_Foto.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label_Foto.setForeground(new java.awt.Color(255, 255, 255));
+        label_Foto.setText("Foto");
+
+        input_Correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                input_CorreoActionPerformed(evt);
+            }
+        });
+        input_Correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                input_CorreoKeyReleased(evt);
             }
         });
 
-        jLabel7.setText("Persona Desapa");
+        input_Celular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                input_CelularActionPerformed(evt);
+            }
+        });
+        input_Celular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                input_CelularKeyReleased(evt);
+            }
+        });
+
+        button_Registro.setBackground(new java.awt.Color(4, 96, 194));
+        button_Registro.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        button_Registro.setForeground(new java.awt.Color(225, 225, 225));
+        button_Registro.setText("Registrar");
+        button_Registro.setEnabled(false);
+        button_Registro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_RegistroActionPerformed(evt);
+            }
+        });
+
+        button_TomarFoto.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        button_TomarFoto.setText("Tomar Foto");
+        button_TomarFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_TomarFotoActionPerformed(evt);
+            }
+        });
+
+        label_PersonaDesaparecida.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label_PersonaDesaparecida.setForeground(new java.awt.Color(255, 255, 255));
+        label_PersonaDesaparecida.setText("Persona Desapa");
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 3, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 204, 204));
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 3, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel9.setToolTipText("");
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 3, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 204, 204));
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 3, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 204, 204));
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 3, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 204, 204));
 
         javax.swing.GroupLayout panel_FondoUploadPeopleLayout = new javax.swing.GroupLayout(panel_FondoUploadPeople);
         panel_FondoUploadPeople.setLayout(panel_FondoUploadPeopleLayout);
@@ -116,88 +215,112 @@ public class UploadPeople extends javax.swing.JFrame {
             panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
+                .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(label_Foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(label_Celular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(label_Correo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(label_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
-                        .addGap(0, 15, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(button_Registro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                        .addComponent(button_MenuPrincipal)
+                        .addGap(22, 22, 22))
                     .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
-                        .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
                         .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
-                                    .addComponent(jRadioButton1)
+                                    .addComponent(radiobutton_Hombre)
                                     .addGap(11, 11, 11)
-                                    .addComponent(Mujer))
-                                .addComponent(jTextField1)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                    .addComponent(radiobutton_Mujer))
+                                .addComponent(input_Correo, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                                .addComponent(input_Celular)
+                                .addComponent(input_Nombre))
                             .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
-                                .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(button_TomarFoto)
+                                    .addComponent(button_SubirFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(45, 45, 45)
+                                .addComponent(label_PersonaDesaparecida, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(37, 37, 37)
+                        .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(label_RegistroDesaparecidos)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panel_FondoUploadPeopleLayout.setVerticalGroup(
             panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
-                .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
+                .addGap(16, 16, 16)
+                .addComponent(label_RegistroDesaparecidos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_Celular, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input_Celular, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(Mujer)))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(radiobutton_Hombre)
+                            .addComponent(radiobutton_Mujer)
+                            .addComponent(jLabel11)))
+                    .addComponent(label_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel_FondoUploadPeopleLayout.createSequentialGroup()
-                        .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(button_TomarFoto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(button_SubirFoto))
+                    .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(label_PersonaDesaparecida, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(panel_FondoUploadPeopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_Registro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_MenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
+
+        input_Nombre.getAccessibleContext().setAccessibleName("txtNombre");
+        input_Correo.getAccessibleContext().setAccessibleName("txtCorreo");
+        input_Celular.getAccessibleContext().setAccessibleName("txtelefono");
+        jLabel8.getAccessibleContext().setAccessibleName("rqrd_Nombre");
+        jLabel9.getAccessibleContext().setAccessibleName("rqrd_email");
+        jLabel10.getAccessibleContext().setAccessibleName("rqrd_tel");
+        jLabel11.getAccessibleContext().setAccessibleName("rqrd_sexo");
+        jLabel12.getAccessibleContext().setAccessibleName("rqrd_foto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_FondoUploadPeople, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(panel_FondoUploadPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,23 +330,47 @@ public class UploadPeople extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void button_MenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MenuPrincipalActionPerformed
        Container container = new Container();
        this.hide();
        container.show();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_button_MenuPrincipalActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void button_SubirFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SubirFotoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_button_SubirFotoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void button_RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_RegistroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_button_RegistroActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void button_TomarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_TomarFotoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_button_TomarFotoActionPerformed
+
+    private void input_CorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_CorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_input_CorreoActionPerformed
+
+    private void input_CelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_CelularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_input_CelularActionPerformed
+
+    private void input_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_input_NombreActionPerformed
+
+    private void input_NombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_input_NombreKeyReleased
+        validar();
+    }//GEN-LAST:event_input_NombreKeyReleased
+
+    private void input_CorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_input_CorreoKeyReleased
+        validar();
+    }//GEN-LAST:event_input_CorreoKeyReleased
+
+    private void input_CelularKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_input_CelularKeyReleased
+        validar();
+    }//GEN-LAST:event_input_CelularKeyReleased
 
         private void setFrameCenter(JFrame f) {
 
@@ -267,26 +414,60 @@ public class UploadPeople extends javax.swing.JFrame {
                 new UploadPeople().setVisible(true);
             }
         });
+    };
+    
+    public void validar(){
+    if(input_Nombre.getText().isEmpty()){
+       jLabel8.setText("Required Field");
+    }else{
+        jLabel8.setText("");
     }
+    if(input_Correo.getText().isEmpty()){
+       jLabel9.setText("Required Field");
+    }else if(!input_Correo.getText().contains("@") || !input_Correo.getText().contains(".")){
+        jLabel9.setText("Invalid Email");
+    }else{
+        jLabel9.setText("");
+    }
+    if(input_Celular.getText().isEmpty()){
+       jLabel10.setText("Required Field");
+    }else{
+        jLabel10.setText("");
+    }
+    if(input_Celular.getText().isEmpty() || input_Correo.getText().isEmpty() || 
+            input_Nombre.getText().isEmpty() || jLabel9.getText().equals("Invalid Email")){
+        button_Registro.setEnabled(false);
+    }else{
+         button_Registro.setEnabled(true);
+    }
+   
+    };
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton Mujer;
     private javax.swing.ButtonGroup buttonGroup_Sexo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton button_MenuPrincipal;
+    private javax.swing.JButton button_Registro;
+    private javax.swing.JButton button_SubirFoto;
+    private javax.swing.JButton button_TomarFoto;
+    private javax.swing.JTextField input_Celular;
+    private javax.swing.JTextField input_Correo;
+    private javax.swing.JTextField input_Nombre;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel label_Celular;
+    private javax.swing.JLabel label_Correo;
+    private javax.swing.JLabel label_Foto;
+    private javax.swing.JLabel label_PersonaDesaparecida;
+    private javax.swing.JLabel label_RegistroDesaparecidos;
+    private javax.swing.JLabel label_Sexo;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JPanel panel_FondoUploadPeople;
+    private javax.swing.JRadioButton radiobutton_Hombre;
+    private javax.swing.JRadioButton radiobutton_Mujer;
     // End of variables declaration//GEN-END:variables
 }
