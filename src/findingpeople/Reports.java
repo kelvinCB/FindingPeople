@@ -161,7 +161,7 @@ public class Reports extends javax.swing.JFrame {
                 .addComponent(button_MenuPrincipalEnPersonasEncontradas)
                 .addGap(92, 92, 92)
                 .addComponent(label_PersonasEncontradas, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(panel_PersonasEncontradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

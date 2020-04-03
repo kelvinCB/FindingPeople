@@ -19,13 +19,13 @@ public class FindingPeople {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        /*Login login = new Login();
+        Login login = new Login();
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        login.setVisible(true);*/
+        login.setVisible(true);
        
-       Container container = new Container();
+       /*Container container = new Container();
        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       container.setVisible(true);
+       container.setVisible(true);*/
 
     }
 

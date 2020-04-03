@@ -294,7 +294,10 @@
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="lblPassword" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="label_SingIn" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPassword" min="-2" pref="40" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -306,10 +309,6 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="128" pref="128" max="-2" attributes="0"/>
                                       <Component id="label_IconoSignIn" min="-2" pref="72" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="145" pref="145" max="-2" attributes="0"/>
-                                      <Component id="label_SignIn" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
@@ -341,7 +340,9 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="385" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="label_SingIn" min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace pref="284" max="32767" attributes="0"/>
                           <Component id="lblPassword" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -359,9 +360,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
                               <Component id="label_IconoSignIn" min="-2" pref="56" max="-2" attributes="0"/>
-                              <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
-                              <Component id="label_SignIn" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="label_IconoUser" min="-2" pref="68" max="-2" attributes="0"/>
                                   <Component id="input_User" min="-2" pref="40" max="-2" attributes="0"/>
@@ -387,17 +386,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="label_SignIn">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Century Gothic" size="15" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Sign In"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JTextField" name="input_User">
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="input_Password">
@@ -515,6 +503,17 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_ForgotPasswordActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JLabel" name="label_SingIn">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Century Gothic" size="18" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Sing In"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panel_Register">
@@ -532,16 +531,6 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
-                          <Component id="label_Register" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="label_IconoRegister" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -556,20 +545,20 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jRadioButton2" min="-2" pref="106" max="-2" attributes="0"/>
+                                          <Component id="radiobutton_Hombre" min="-2" pref="106" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="radionbutton_Mujer" min="-2" pref="106" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="input_UserRegister2" alignment="1" pref="241" max="32767" attributes="0"/>
-                                      <Component id="input_UserRegister1" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="input_UserRegister" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="input_Phone" alignment="1" pref="241" max="32767" attributes="0"/>
+                                      <Component id="input_UserInRegister" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="input_FullName" alignment="1" max="32767" attributes="0"/>
                                       <Component id="input_PasswordRegister" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="input_PasswordRegister1" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="input_ConfirmPassword" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="label_DontHaveAccount1" min="-2" pref="210" max="-2" attributes="0"/>
-                                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                                  <EmptySpace pref="26" max="32767" attributes="0"/>
                                   <Component id="button_RegisterHere2" min="-2" pref="124" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -582,6 +571,19 @@
                           </Group>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="label_IconoRegister" min="-2" pref="70" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+                                  <Component id="label_Register" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -593,12 +595,12 @@
                           <Component id="label_Register" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="input_UserRegister" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="input_FullName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="input_UserRegister1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="input_UserInRegister" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -608,17 +610,17 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="input_PasswordRegister1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="input_ConfirmPassword" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="input_UserRegister2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="input_Phone" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="radiobutton_Hombre" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="radionbutton_Mujer" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -649,17 +651,17 @@
                     <Property name="text" type="java.lang.String" value="Register"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="input_UserRegister">
+                <Component class="javax.swing.JTextField" name="input_FullName">
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="input_PasswordRegister">
                 </Component>
-                <Component class="javax.swing.JTextField" name="input_UserRegister1">
+                <Component class="javax.swing.JTextField" name="input_UserInRegister">
                 </Component>
-                <Component class="javax.swing.JPasswordField" name="input_PasswordRegister1">
+                <Component class="javax.swing.JPasswordField" name="input_ConfirmPassword">
                 </Component>
-                <Component class="javax.swing.JTextField" name="input_UserRegister2">
+                <Component class="javax.swing.JTextField" name="input_Phone">
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+                <Component class="javax.swing.JRadioButton" name="radiobutton_Hombre">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="41" green="2f" red="25" type="rgb"/>
@@ -676,7 +678,7 @@
                     <Property name="text" type="java.lang.String" value="Hombre"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radiobutton_HombreActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="label_WarningsRegister">
@@ -703,6 +705,9 @@
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="41" green="2f" red="25" type="rgb"/>
+                    </Property>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroup_RegisterSexo"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="1"/>

@@ -13,6 +13,8 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import model.MetodosSQL;
 
 /**
  *
@@ -39,7 +41,10 @@ public class Login extends javax.swing.JFrame {
         setImagenJLabel(label_IconoPassword, "Images/PasswordImage.png");
         setImagenJLabel(label_IconoSignIn, "Images/SignInIcon.png");
 
+        //Llamando el modelo
     }
+
+    MetodosSQL metodosSQL = new MetodosSQL();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +69,6 @@ public class Login extends javax.swing.JFrame {
         lblCargando1 = new javax.swing.JLabel();
         panel_InfoLogin = new javax.swing.JPanel();
         panel_Login = new javax.swing.JPanel();
-        label_SignIn = new javax.swing.JLabel();
         input_User = new javax.swing.JTextField();
         input_Password = new javax.swing.JPasswordField();
         button_Login = new rojeru_san.RSButton();
@@ -78,15 +82,16 @@ public class Login extends javax.swing.JFrame {
         label_ValidacionesTxt = new javax.swing.JLabel();
         button_RegisterHere = new javax.swing.JButton();
         button_ForgotPassword = new javax.swing.JButton();
+        label_SingIn = new javax.swing.JLabel();
         panel_Register = new javax.swing.JPanel();
         label_IconoRegister = new javax.swing.JLabel();
         label_Register = new javax.swing.JLabel();
-        input_UserRegister = new javax.swing.JTextField();
+        input_FullName = new javax.swing.JTextField();
         input_PasswordRegister = new javax.swing.JPasswordField();
-        input_UserRegister1 = new javax.swing.JTextField();
-        input_PasswordRegister1 = new javax.swing.JPasswordField();
-        input_UserRegister2 = new javax.swing.JTextField();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        input_UserInRegister = new javax.swing.JTextField();
+        input_ConfirmPassword = new javax.swing.JPasswordField();
+        input_Phone = new javax.swing.JTextField();
+        radiobutton_Hombre = new javax.swing.JRadioButton();
         label_WarningsRegister = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         radionbutton_Mujer = new javax.swing.JRadioButton();
@@ -203,10 +208,6 @@ public class Login extends javax.swing.JFrame {
 
         panel_Login.setBackground(new java.awt.Color(37, 47, 65));
 
-        label_SignIn.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
-        label_SignIn.setForeground(new java.awt.Color(204, 204, 204));
-        label_SignIn.setText("Sign In");
-
         button_Login.setBackground(new java.awt.Color(37, 47, 65));
         button_Login.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(37, 25, 97), new java.awt.Color(37, 25, 97)));
         button_Login.setText("Login");
@@ -260,6 +261,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        label_SingIn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        label_SingIn.setForeground(new java.awt.Color(255, 255, 255));
+        label_SingIn.setText("Sing In");
+
         javax.swing.GroupLayout panel_LoginLayout = new javax.swing.GroupLayout(panel_Login);
         panel_Login.setLayout(panel_LoginLayout);
         panel_LoginLayout.setHorizontalGroup(
@@ -279,7 +284,9 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(button_RegisterHere, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_LoginLayout.createSequentialGroup()
-                        .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label_SingIn)
+                            .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(163, 163, 163))))
             .addGroup(panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_LoginLayout.createSequentialGroup()
@@ -288,9 +295,6 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(panel_LoginLayout.createSequentialGroup()
                             .addGap(128, 128, 128)
                             .addComponent(label_IconoSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panel_LoginLayout.createSequentialGroup()
-                            .addGap(145, 145, 145)
-                            .addComponent(label_SignIn))
                         .addGroup(panel_LoginLayout.createSequentialGroup()
                             .addGap(19, 19, 19)
                             .addComponent(label_IconoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,7 +317,9 @@ public class Login extends javax.swing.JFrame {
         panel_LoginLayout.setVerticalGroup(
             panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_LoginLayout.createSequentialGroup()
-                .addContainerGap(385, Short.MAX_VALUE)
+                .addGap(71, 71, 71)
+                .addComponent(label_SingIn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
                 .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,9 +334,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(panel_LoginLayout.createSequentialGroup()
                     .addGap(0, 12, Short.MAX_VALUE)
                     .addComponent(label_IconoSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(16, 16, 16)
-                    .addComponent(label_SignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
+                    .addGap(64, 64, 64)
                     .addGroup(panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(label_IconoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(input_User, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -357,14 +361,14 @@ public class Login extends javax.swing.JFrame {
         label_Register.setForeground(new java.awt.Color(255, 255, 255));
         label_Register.setText("Register");
 
-        jRadioButton2.setBackground(new java.awt.Color(37, 47, 65));
-        buttonGroup_RegisterSexo.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Hombre");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        radiobutton_Hombre.setBackground(new java.awt.Color(37, 47, 65));
+        buttonGroup_RegisterSexo.add(radiobutton_Hombre);
+        radiobutton_Hombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        radiobutton_Hombre.setForeground(new java.awt.Color(255, 255, 255));
+        radiobutton_Hombre.setText("Hombre");
+        radiobutton_Hombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                radiobutton_HombreActionPerformed(evt);
             }
         });
 
@@ -377,6 +381,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Full Name");
 
         radionbutton_Mujer.setBackground(new java.awt.Color(37, 47, 65));
+        buttonGroup_RegisterSexo.add(radionbutton_Mujer);
         radionbutton_Mujer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         radionbutton_Mujer.setForeground(new java.awt.Color(255, 255, 255));
         radionbutton_Mujer.setText("Mujer");
@@ -436,14 +441,6 @@ public class Login extends javax.swing.JFrame {
         panel_Register.setLayout(panel_RegisterLayout);
         panel_RegisterLayout.setHorizontalGroup(
             panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_RegisterLayout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(label_Register)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_RegisterLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(label_IconoRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_RegisterLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -457,17 +454,17 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panel_RegisterLayout.createSequentialGroup()
-                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(radiobutton_Hombre, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(radionbutton_Mujer, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(input_UserRegister2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                            .addComponent(input_UserRegister1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(input_UserRegister, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(input_Phone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                            .addComponent(input_UserInRegister, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(input_FullName, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(input_PasswordRegister, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(input_PasswordRegister1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(input_ConfirmPassword, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(panel_RegisterLayout.createSequentialGroup()
                         .addComponent(label_DontHaveAccount1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addComponent(button_RegisterHere2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_RegisterLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -475,6 +472,15 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(label_WarningsRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(button_Register, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE))))
                 .addGap(20, 20, 20))
+            .addGroup(panel_RegisterLayout.createSequentialGroup()
+                .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panel_RegisterLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(label_IconoRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_RegisterLayout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(label_Register)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_RegisterLayout.setVerticalGroup(
             panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,11 +491,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(label_Register, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(input_UserRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input_FullName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(input_UserRegister1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input_UserInRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -497,15 +503,15 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(input_PasswordRegister1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input_ConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(input_UserRegister2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panel_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
+                    .addComponent(radiobutton_Hombre)
                     .addComponent(radionbutton_Mujer))
                 .addGap(18, 18, 18)
                 .addComponent(label_WarningsRegister)
@@ -550,7 +556,25 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_LoginActionPerformed
-        validateEmptyFields();
+         validateEmptyFields();
+        //Validar que el usuario se encuentre en la base de datos
+        
+        String busqueda_usuario =  metodosSQL.busquedaDeUsuarioRegistrado(input_User.getText(), input_Password.getText());
+        
+        //Iniciar como administrador aunque no este en la base de datos
+        
+        if(input_User.getText().equals("admin") && input_Password.getText().equals("admin")){
+            JOptionPane.showMessageDialog(this, "Bienvenido Administrador");
+            mostrarPanelCargandoEIngresar();   
+        } // Si soy usuario en la base de datos
+        else if(busqueda_usuario.equals("Usuario Encontrado")){
+            String busqued_nombre = metodosSQL.buscarNombre(input_User.getText());
+            JOptionPane.showMessageDialog(this, "Bienvenido(a) \n" + busqued_nombre);
+            mostrarPanelCargandoEIngresar(); //Cambiar metodo para que ingrese como usuario
+        }else{
+           label_ValidacionesTxt.setText("Usuario NO Registrado");
+        }
+
     }//GEN-LAST:event_button_LoginActionPerformed
 
     private void check_RemenberMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_RemenberMeActionPerformed
@@ -561,12 +585,12 @@ public class Login extends javax.swing.JFrame {
         panel_Login.hide();
         setImagenJLabel(label_IconoRegister, "Images/SignInIcon.png");
         panel_Register.show();
-        
+
     }//GEN-LAST:event_button_RegisterHereActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void radiobutton_HombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radiobutton_HombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_radiobutton_HombreActionPerformed
 
     private void radionbutton_MujerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radionbutton_MujerActionPerformed
         // TODO add your handling code here:
@@ -578,9 +602,19 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_button_RegisterHere2ActionPerformed
 
     private void button_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_RegisterActionPerformed
-        
-        label_WarningsRegister.setText("Errores maniga");
-        
+        // Capturar valor del sexo
+        radiobutton_Hombre.setActionCommand("Hombre");
+        radionbutton_Mujer.setActionCommand("Mujer");
+        String sexo = buttonGroup_RegisterSexo.getSelection().getActionCommand();
+        System.out.println(sexo);
+        //Guardar en la base de datos los datos obtenidos del register y validar que todo está bien
+        int i = metodosSQL.guardar(input_FullName.getText(), input_UserInRegister.getText(), input_PasswordRegister.getText(), input_Phone.getText(), sexo);
+
+        if (i > 0) {
+            JOptionPane.showMessageDialog(this, "Datos Guardados Correctamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al guardar los datos");
+        }
     }//GEN-LAST:event_button_RegisterActionPerformed
 
     private void button_ForgotPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ForgotPasswordActionPerformed
@@ -597,7 +631,6 @@ public class Login extends javax.swing.JFrame {
         label.setIcon(i);
     }
 
-    
     private void validateEmptyFields() {
         if (input_User.getText().isEmpty() || input_Password.getText().isEmpty()) {
             label_ValidacionesTxt.setText("No puede estar vacío!");
@@ -696,19 +729,18 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton button_RegisterHere;
     private javax.swing.JButton button_RegisterHere2;
     private javax.swing.JCheckBox check_RemenberMe;
+    private javax.swing.JPasswordField input_ConfirmPassword;
+    private javax.swing.JTextField input_FullName;
     private javax.swing.JPasswordField input_Password;
     private javax.swing.JPasswordField input_PasswordRegister;
-    private javax.swing.JPasswordField input_PasswordRegister1;
+    private javax.swing.JTextField input_Phone;
     private javax.swing.JTextField input_User;
-    private javax.swing.JTextField input_UserRegister;
-    private javax.swing.JTextField input_UserRegister1;
-    private javax.swing.JTextField input_UserRegister2;
+    private javax.swing.JTextField input_UserInRegister;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel label_DontHaveAccount;
@@ -720,7 +752,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel label_LoginImage;
     private javax.swing.JLabel label_ProyectName;
     private javax.swing.JLabel label_Register;
-    private javax.swing.JLabel label_SignIn;
+    private javax.swing.JLabel label_SingIn;
     private javax.swing.JLabel label_ValidacionesTxt;
     private javax.swing.JLabel label_WarningsRegister;
     private javax.swing.JLabel lblCargando;
@@ -734,6 +766,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel panel_Login;
     private javax.swing.JPanel panel_Register;
     private rojerusan.componentes.RSProgressMaterial rSProgressMaterial1;
+    private javax.swing.JRadioButton radiobutton_Hombre;
     private javax.swing.JRadioButton radionbutton_Mujer;
     private javax.swing.JSeparator separator_Separator1;
     // End of variables declaration//GEN-END:variables
