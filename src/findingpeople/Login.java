@@ -36,13 +36,13 @@ public class Login extends javax.swing.JFrame {
                 
                 @Override
                 public void windowClosing(WindowEvent e){
-                    int x = JOptionPane.showConfirmDialog(null, "¿Realmemte quiere salir de ReLiz System?",
+                    int x = JOptionPane.showConfirmDialog(null, "¿Realmemte quiere salir de KeLiz System?",
                                                           "Cerrar",
                                                           JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     if(x == JOptionPane.YES_OPTION){
                         e.getWindow().dispose();
                         System.out.println("Cerrar");
-                    }else{
+                    }else if(x == JOptionPane.NO_OPTION){
                         System.out.println("Seguimo'");
                     }
                 }
@@ -53,6 +53,7 @@ public class Login extends javax.swing.JFrame {
         PlaceHolder holder2 = new PlaceHolder("Password", input_Password);
         setFrameCenter(this);
         setTitle("KeLiz System");
+        setIconImage(new ImageIcon(getClass().getResource("/findingpeople/Images/loginImage.png")).getImage());
         setResizable(false);
         setImagenJLabel(label_LoginImage, "Images/FaceRecognition.jpg");
         setImagenJLabel(label_IconoUser, "Images/UserTxtUser.png");

@@ -36,19 +36,20 @@ public class Container extends javax.swing.JFrame {
                 
                 @Override
                 public void windowClosing(WindowEvent e){
-                    int x = JOptionPane.showConfirmDialog(null, "¿Realmemte quiere salir de ReLiz System?",
+                    int x = JOptionPane.showConfirmDialog(null, "¿Realmemte quiere salir de KeLiz System?",
                                                           "Cerrar",
                                                           JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     if(x == JOptionPane.YES_OPTION){
                         e.getWindow().dispose();
                         System.out.println("Cerrar");
-                    }else{
+                    }else if(x == JOptionPane.NO_OPTION){
                         System.out.println("Seguimo'");
                     }
                 }
         });
         setFrameCenter(this);
         setTitle("KeLiz System - Menú Principal");
+        setIconImage(new ImageIcon(getClass().getResource("/findingpeople/Images/loginImage.png")).getImage());
         setResizable(false);
         //  setExtendedState(MAXIMIZED_BOTH);
         button_RegistrarPersonaDesaparecida.setIcon(setIconInButtonPresioned("Images/EncontrarPersonaImagen.png", button_RegistrarPersonaDesaparecida,20,20));
@@ -56,7 +57,7 @@ public class Container extends javax.swing.JFrame {
     }
 
     public void setFrameCenter(JFrame f) {
-
+      
         Toolkit toolkit = getToolkit();
         Dimension tamanoPantalla = toolkit.getScreenSize();
         f.setLocation((tamanoPantalla.width / 2) - (getWidth() / 2), (tamanoPantalla.height / 2) - (getHeight() / 2));
@@ -153,6 +154,7 @@ public class Container extends javax.swing.JFrame {
         label_EncontrarPersonaDesaparecida.setText("Encontrar Persona Desaparecida");
 
         button_EncontrarPersonaDesaparecida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/findingpeople/Images/lost_find.png"))); // NOI18N
+        button_EncontrarPersonaDesaparecida.setContentAreaFilled(false);
         button_EncontrarPersonaDesaparecida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_EncontrarPersonaDesaparecidaActionPerformed(evt);
@@ -398,16 +400,16 @@ public class Container extends javax.swing.JFrame {
     }//GEN-LAST:event_button_ReportesActionPerformed
 
     private void button_CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_CerrarSesionActionPerformed
-            int logout = JOptionPane.showConfirmDialog(null, "Do you really want to logout?",
-                                                       "Logout",
+            int logout = JOptionPane.showConfirmDialog(null, "¿Está seguro de cerrar la sesión?",
+                                                       "Cerrar Sesión",
                                                        JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
                         if(logout == JOptionPane.YES_OPTION){
                             Login login = new Login();
                             this.hide();
                             login.show();
-                            System.out.println("Logout");
+                            System.out.println("Cerrar Sesión");
                         }else{
-                            System.out.println("Still Login");
+                            System.out.println("Seguimo'");
                         }
        
         

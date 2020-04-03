@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -30,18 +31,19 @@ public class Accesos extends javax.swing.JFrame {
                 
                 @Override
                 public void windowClosing(WindowEvent e){
-                    int x = JOptionPane.showConfirmDialog(null, "¿Realmemte quiere salir de ReLiz System?",
+                    int x = JOptionPane.showConfirmDialog(null, "¿Realmemte quiere salir de KeLiz System?",
                                                           "Cerrar",
                                                           JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     if(x == JOptionPane.YES_OPTION){
                         e.getWindow().dispose();
                         System.out.println("Cerrar");
-                    }else{
+                    }else if(x == JOptionPane.NO_OPTION){
                         System.out.println("Seguimo'");
                     }
                 }
         });
         setTitle("KeLiz System - Reportes");
+        setIconImage(new ImageIcon(getClass().getResource("/findingpeople/Images/loginImage.png")).getImage());
         this.setResizable(false);
         setFrameCenter(this);
         panel_Usuarios.hide();
