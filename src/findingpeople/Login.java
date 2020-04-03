@@ -58,6 +58,7 @@ public class Login extends javax.swing.JFrame {
         label_ProyectName = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
+        label_ProyectName1 = new javax.swing.JLabel();
         panel_Loanding = new javax.swing.JPanel();
         rSProgressMaterial1 = new rojerusan.componentes.RSProgressMaterial();
         lblCargando = new javax.swing.JLabel();
@@ -103,34 +104,39 @@ public class Login extends javax.swing.JFrame {
         panel_EsteticaLogin.setBackground(new java.awt.Color(97, 212, 195));
         panel_EsteticaLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel_ImageLogin.setBackground(new java.awt.Color(97, 212, 195));
+        panel_ImageLogin.setBackground(new java.awt.Color(37, 47, 65));
 
         label_LoginImage.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         label_LoginImage.setForeground(new java.awt.Color(255, 255, 255));
         label_LoginImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_LoginImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/findingpeople/Images/FaceRecognition.jpg"))); // NOI18N
+        label_LoginImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/findingpeople/Images/loginImage.png"))); // NOI18N
 
-        label_ProyectName.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        label_ProyectName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         label_ProyectName.setForeground(new java.awt.Color(255, 255, 255));
         label_ProyectName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_ProyectName.setText("Finding People");
+        label_ProyectName.setText("Face recognition system for neighborhoods");
 
         jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
 
         jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
 
+        label_ProyectName1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        label_ProyectName1.setForeground(new java.awt.Color(255, 255, 255));
+        label_ProyectName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_ProyectName1.setText("KeLiz System");
+
         javax.swing.GroupLayout panel_ImageLoginLayout = new javax.swing.GroupLayout(panel_ImageLogin);
         panel_ImageLogin.setLayout(panel_ImageLoginLayout);
         panel_ImageLoginLayout.setHorizontalGroup(
             panel_ImageLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGroup(panel_ImageLoginLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(label_ProyectName)
+                .addContainerGap(94, Short.MAX_VALUE))
             .addGroup(panel_ImageLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_ImageLoginLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(panel_ImageLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_ImageLoginLayout.createSequentialGroup()
-                            .addGap(105, 105, 105)
-                            .addComponent(label_ProyectName))
                         .addComponent(label_LoginImage, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(panel_ImageLoginLayout.createSequentialGroup()
                             .addGap(70, 70, 70)
@@ -139,21 +145,32 @@ public class Login extends javax.swing.JFrame {
                             .addGap(120, 120, 120)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(panel_ImageLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_ImageLoginLayout.createSequentialGroup()
+                    .addGap(115, 115, 115)
+                    .addComponent(label_ProyectName1)
+                    .addContainerGap(145, Short.MAX_VALUE)))
         );
         panel_ImageLoginLayout.setVerticalGroup(
             panel_ImageLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGroup(panel_ImageLoginLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(label_ProyectName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(408, Short.MAX_VALUE))
             .addGroup(panel_ImageLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_ImageLoginLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(label_ProyectName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(76, 76, 76)
+                    .addGap(0, 155, Short.MAX_VALUE)
                     .addComponent(label_LoginImage, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(42, 42, 42)
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(10, 10, 10)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 13, Short.MAX_VALUE)))
+            .addGroup(panel_ImageLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_ImageLoginLayout.createSequentialGroup()
+                    .addGap(36, 36, 36)
+                    .addComponent(label_ProyectName1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(454, Short.MAX_VALUE)))
         );
 
         panel_EsteticaLogin.add(panel_ImageLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 530));
@@ -207,7 +224,7 @@ public class Login extends javax.swing.JFrame {
         label_SignIn.setForeground(new java.awt.Color(204, 204, 204));
         label_SignIn.setText("Sign In");
 
-        button_Login.setBackground(new java.awt.Color(37, 47, 65));
+        button_Login.setBackground(new java.awt.Color(4, 96, 194));
         button_Login.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(37, 25, 97), new java.awt.Color(37, 25, 97)));
         button_Login.setText("Login");
         button_Login.setColorHover(new java.awt.Color(37, 50, 65));
@@ -719,6 +736,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel label_IconoUser;
     private javax.swing.JLabel label_LoginImage;
     private javax.swing.JLabel label_ProyectName;
+    private javax.swing.JLabel label_ProyectName1;
     private javax.swing.JLabel label_Register;
     private javax.swing.JLabel label_SignIn;
     private javax.swing.JLabel label_ValidacionesTxt;
