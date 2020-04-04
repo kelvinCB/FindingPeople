@@ -92,5 +92,94 @@ public class MetodosSQL {
         }
         return busqueda_usuario;
     }
+    
+    // Insertar datos en personas desaparecidas
+    
+        public int guardarPersonaDesaparecida(String nombre, String sexo, String correo_contacto, String telefono_contacto, String fecha_registro, String foto) {
+
+        int resultado = 0;
+        Connection conexion = null;
+
+        String sentencia_guardar = ("INSERT INTO desaparecidos (nombre,sexo,correo_contacto,telefono_contacto,fecha_registro,foto) VALUES (?,?,?,?,?,?)");
+
+        try {
+            conexion = ConexionBD.conectar();
+            sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
+            sentencia_preparada.setString(1, nombre);
+            sentencia_preparada.setString(2, sexo);
+            sentencia_preparada.setString(3, correo_contacto);
+            sentencia_preparada.setString(4, telefono_contacto);
+            sentencia_preparada.setString(5, fecha_registro);
+            sentencia_preparada.setString(6, foto);
+
+            resultado = sentencia_preparada.executeUpdate();
+            sentencia_preparada.close();
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error al insertar datos a la tabla desaparecidos");
+            e.printStackTrace();
+        }
+
+        return resultado;
+    }
+        
+        public static String[] buscarDatosEnDesaparecidos(String desaparecido) {
+         String[] busqueda_nombre = null;
+        Connection conexion = null;
+        try {
+            conexion = ConexionBD.conectar();
+            String sentencia_buscar = ("SELECT nombre,sexo,correo_contacto,telefono_contacto,fecha_registro,foto FROM desaparecidos WHERE nombre = '" + desaparecido + "'");
+            sentencia_preparada = conexion.prepareStatement(sentencia_buscar);
+            resultados = sentencia_preparada.executeQuery();
+            if (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                String sexo = resultados.getString("sexo");
+                String correo_contacto = resultados.getString("correo_contacto");
+                String telefono_contacto = resultados.getString("telefono_contacto");
+                String fecha_registro = resultados.getString("fecha_registro");
+                String foto = resultados.getString("foto");
+                busqueda_nombre = new String[]{nombre,sexo,correo_contacto,telefono_contacto,fecha_registro,foto};
+                
+            }
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error en el método getUsuario");
+            e.printStackTrace();
+        }
+
+        return busqueda_nombre;
+    }
+
+        
+        // Insertar datos en personas encontradas
+    
+        public int guardarPersonaEncontrada(String nombre, String sexo, String correo_contacto, String telefono_contacto, String fecha_encuentro, String lugar_encuentro, String foto) {
+
+        int resultado = 0;
+        Connection conexion = null;
+
+        String sentencia_guardar = ("INSERT INTO encontrados (nombre,sexo,correo_contacto,telefono_contacto,fecha_encuentro,lugar_encuentro,foto) VALUES (?,?,?,?,?,?,?)");
+
+        try {
+            conexion = ConexionBD.conectar();
+            sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
+            sentencia_preparada.setString(1, nombre);
+            sentencia_preparada.setString(2, sexo);
+            sentencia_preparada.setString(3, correo_contacto);
+            sentencia_preparada.setString(4, telefono_contacto);
+            sentencia_preparada.setString(5, fecha_encuentro);
+            sentencia_preparada.setString(6, lugar_encuentro);
+            sentencia_preparada.setString(7, foto);
+
+            resultado = sentencia_preparada.executeUpdate();
+            sentencia_preparada.close();
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error al insertar datos a la tabla encontrados");
+            e.printStackTrace();
+        }
+
+        return resultado;
+    }
 
 }
