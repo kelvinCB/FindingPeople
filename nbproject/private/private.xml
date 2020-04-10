@@ -5,11 +5,11 @@
         <group>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/findingpeople/FindingPeople.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/findingpeople/Container.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/findingpeople/Login.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/model/ConexionBD.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/model/MetodosSQL.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/findingpeople/Recognizer.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/findingpeople/ContainerUsuarios.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/findingpeople/EncontrarDesaparecido.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/findingpeople/UploadPeople.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/findingpeople/Reports.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/FindingPeople/src/findingpeople/TiempoReal.java</file>
         </group>
     </open-files>
 </project-private>

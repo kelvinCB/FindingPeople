@@ -5,6 +5,8 @@
  */
 package findingpeople;
 
+import static findingpeople.UploadPeople.label_PersonaDesaparecida;
+import findingpeople.util.CommonsFrame;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -52,7 +54,8 @@ public class Reports extends javax.swing.JFrame {
         setTitle("KeLiz System - Reportes");
         setIconImage(new ImageIcon(getClass().getResource("/findingpeople/Images/loginImage.png")).getImage());
         this.setResizable(false);
-        setFrameCenter(this);
+        CommonsFrame.setFrameCenter(this);
+        CommonsFrame.frameAtributes(this);
         panel_PersonasEncontradas.hide();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -76,28 +79,22 @@ public class Reports extends javax.swing.JFrame {
         button_MenuPrincipalEnPersonasDesaparecidas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_PersonasDesaparecidas = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        label_Desaparecido = new javax.swing.JLabel();
+        button_VerFotoInDesaparecidos = new javax.swing.JButton();
         button_CargarDatos = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         input_IDInReports = new javax.swing.JTextField();
+        input_rutaFotosInDesaparecidos = new javax.swing.JTextField();
+        label_RutaFotoInDesaparecidos = new javax.swing.JLabel();
         panel_PersonasEncontradas = new javax.swing.JPanel();
-        button_MenuPrincipalEnPersonasEncontradas = new javax.swing.JButton();
-        button_MenuPrincipalEnPersonasDesaparecidas1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        button_MenuPrincipalEnPersonasDesaparecidas2 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table_PersonasEncontradas = new javax.swing.JTable();
+        label_FotoEncontrados = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        button_CargarDatosEncontrados = new javax.swing.JButton();
+        label_Id = new javax.swing.JLabel();
+        input_IDInReportsEncontrados = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,23 +183,12 @@ public class Reports extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(table_PersonasDesaparecidas);
 
-        jLabel1.setText("jLabel1");
-
-        jButton1.setText("Ver Foto");
-
-        jButton2.setText("Ver Foto");
-
-        jButton3.setText("Ver Foto");
-
-        jButton4.setText("Ver Foto");
-
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField1");
-
-        jTextField3.setText("jTextField1");
-
-        jTextField4.setText("jTextField1");
+        button_VerFotoInDesaparecidos.setText("Ver Foto");
+        button_VerFotoInDesaparecidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_VerFotoInDesaparecidosActionPerformed(evt);
+            }
+        });
 
         button_CargarDatos.setText("Cargar Datos");
         button_CargarDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -218,47 +204,41 @@ public class Reports extends javax.swing.JFrame {
 
         input_IDInReports.setToolTipText("");
 
+        label_RutaFotoInDesaparecidos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label_RutaFotoInDesaparecidos.setForeground(new java.awt.Color(255, 255, 255));
+        label_RutaFotoInDesaparecidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_RutaFotoInDesaparecidos.setText("Ruta Foto:");
+
         javax.swing.GroupLayout panel_PersonasDesaparecidasLayout = new javax.swing.GroupLayout(panel_PersonasDesaparecidas);
         panel_PersonasDesaparecidas.setLayout(panel_PersonasDesaparecidasLayout);
         panel_PersonasDesaparecidasLayout.setHorizontalGroup(
             panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_PersonasDesaparecidasLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
-            .addGroup(panel_PersonasDesaparecidasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_PersonasDesaparecidasLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addGap(20, 20, 20)
+                        .addGroup(panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel_PersonasDesaparecidasLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(input_IDInReports, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                                .addComponent(button_CargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(185, 185, 185)
+                                .addComponent(button_MenuPrincipalEnPersonasDesaparecidas))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasDesaparecidasLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label_RutaFotoInDesaparecidos, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(input_IDInReports, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(button_CargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(185, 185, 185)
-                        .addComponent(button_MenuPrincipalEnPersonasDesaparecidas)
-                        .addContainerGap())
-                    .addGroup(panel_PersonasDesaparecidasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(panel_PersonasDesaparecidasLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                            .addComponent(jTextField3))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))))
+                        .addComponent(input_rutaFotosInDesaparecidos, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(button_VerFotoInDesaparecidos, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasDesaparecidasLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(label_Desaparecido, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         panel_PersonasDesaparecidasLayout.setVerticalGroup(
             panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,23 +256,16 @@ public class Reports extends javax.swing.JFrame {
                             .addComponent(button_CargarDatos))
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(26, 26, 26)
+                .addComponent(label_Desaparecido, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(button_VerFotoInDesaparecidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panel_PersonasDesaparecidasLayout.createSequentialGroup()
                         .addGroup(panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 154, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panel_PersonasDesaparecidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4))
+                            .addComponent(input_rutaFotosInDesaparecidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_RutaFotoInDesaparecidos, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -300,100 +273,112 @@ public class Reports extends javax.swing.JFrame {
 
         panel_PersonasEncontradas.setBackground(new java.awt.Color(37, 47, 65));
 
-        button_MenuPrincipalEnPersonasEncontradas.setBackground(new java.awt.Color(4, 96, 194));
-        button_MenuPrincipalEnPersonasEncontradas.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        button_MenuPrincipalEnPersonasEncontradas.setForeground(new java.awt.Color(225, 225, 225));
-        button_MenuPrincipalEnPersonasEncontradas.setText("Menu Principal");
-        button_MenuPrincipalEnPersonasEncontradas.addActionListener(new java.awt.event.ActionListener() {
+        button_MenuPrincipalEnPersonasDesaparecidas2.setBackground(new java.awt.Color(4, 96, 194));
+        button_MenuPrincipalEnPersonasDesaparecidas2.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        button_MenuPrincipalEnPersonasDesaparecidas2.setForeground(new java.awt.Color(225, 225, 225));
+        button_MenuPrincipalEnPersonasDesaparecidas2.setText("Menu Principal");
+        button_MenuPrincipalEnPersonasDesaparecidas2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_MenuPrincipalEnPersonasEncontradasActionPerformed(evt);
+                button_MenuPrincipalEnPersonasDesaparecidas2ActionPerformed(evt);
             }
         });
 
-        button_MenuPrincipalEnPersonasDesaparecidas1.setBackground(new java.awt.Color(4, 96, 194));
-        button_MenuPrincipalEnPersonasDesaparecidas1.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        button_MenuPrincipalEnPersonasDesaparecidas1.setForeground(new java.awt.Color(225, 225, 225));
-        button_MenuPrincipalEnPersonasDesaparecidas1.setText("Menu Principal");
-        button_MenuPrincipalEnPersonasDesaparecidas1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_MenuPrincipalEnPersonasDesaparecidas1ActionPerformed(evt);
-            }
-        });
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        table_PersonasEncontradas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nombre", "Sexo", "Correo_Contacto", "Telefono_Contacto", "Fecha_Encuentro", "Lugar_Encuentro", "Foto"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true, false
+            };
 
-        jLabel2.setText("jLabel1");
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        jButton5.setText("Ver Foto");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(table_PersonasEncontradas);
 
-        jButton6.setText("Ver Foto");
+        jButton2.setText("Ver Foto");
 
-        jButton7.setText("Ver Foto");
+        button_CargarDatosEncontrados.setText("Cargar Datos");
+        button_CargarDatosEncontrados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_CargarDatosEncontradosActionPerformed(evt);
+            }
+        });
 
-        jButton8.setText("Ver Foto");
+        label_Id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label_Id.setForeground(new java.awt.Color(255, 255, 255));
+        label_Id.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label_Id.setText("ID: ");
+
+        input_IDInReportsEncontrados.setToolTipText("");
 
         javax.swing.GroupLayout panel_PersonasEncontradasLayout = new javax.swing.GroupLayout(panel_PersonasEncontradas);
         panel_PersonasEncontradas.setLayout(panel_PersonasEncontradasLayout);
         panel_PersonasEncontradasLayout.setHorizontalGroup(
             panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_PersonasEncontradasLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_PersonasEncontradasLayout.createSequentialGroup()
+                        .addComponent(label_FotoEncontrados, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))
+                    .addGroup(panel_PersonasEncontradasLayout.createSequentialGroup()
+                        .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel_PersonasEncontradasLayout.createSequentialGroup()
+                                .addComponent(label_Id)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(input_IDInReportsEncontrados, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                                .addComponent(button_CargarDatosEncontrados, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(185, 185, 185)
+                                .addComponent(button_MenuPrincipalEnPersonasDesaparecidas2))
+                            .addComponent(jScrollPane3))
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasEncontradasLayout.createSequentialGroup()
-                .addContainerGap(749, Short.MAX_VALUE)
-                .addComponent(button_MenuPrincipalEnPersonasEncontradas, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_PersonasEncontradasLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasEncontradasLayout.createSequentialGroup()
-                            .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panel_PersonasEncontradasLayout.createSequentialGroup()
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(42, 42, 42))
-                        .addComponent(button_MenuPrincipalEnPersonasDesaparecidas1, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasEncontradasLayout.createSequentialGroup()
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(86, 86, 86)))
-                    .addContainerGap()))
         );
         panel_PersonasEncontradasLayout.setVerticalGroup(
             panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_PersonasEncontradasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(button_MenuPrincipalEnPersonasEncontradas)
-                .addContainerGap(486, Short.MAX_VALUE))
-            .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_PersonasEncontradasLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(button_MenuPrincipalEnPersonasDesaparecidas1)
-                    .addGap(48, 48, 48)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(44, 44, 44)
-                    .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_PersonasEncontradasLayout.createSequentialGroup()
+                        .addComponent(button_MenuPrincipalEnPersonasDesaparecidas2)
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PersonasEncontradasLayout.createSequentialGroup()
+                        .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel_PersonasEncontradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(label_Id)
+                                .addComponent(input_IDInReportsEncontrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(button_CargarDatosEncontrados))
+                        .addGap(18, 18, 18)))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(label_FotoEncontrados, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLayeredPane1.add(panel_PersonasEncontradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 520));
@@ -451,27 +436,25 @@ public class Reports extends javax.swing.JFrame {
         container.show();
     }//GEN-LAST:event_button_MenuPrincipalEnPersonasDesaparecidasActionPerformed
 
-    private void button_MenuPrincipalEnPersonasEncontradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MenuPrincipalEnPersonasEncontradasActionPerformed
-        Container container = new Container();
-        this.hide();
-        container.show();
-    }//GEN-LAST:event_button_MenuPrincipalEnPersonasEncontradasActionPerformed
-
-    private void button_MenuPrincipalEnPersonasDesaparecidas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MenuPrincipalEnPersonasDesaparecidas1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button_MenuPrincipalEnPersonasDesaparecidas1ActionPerformed
-
     private void button_CargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_CargarDatosActionPerformed
         cargarDatosDePersonasDesaparecidas();
     }//GEN-LAST:event_button_CargarDatosActionPerformed
 
-    private void setFrameCenter(JFrame f) {
+    private void button_MenuPrincipalEnPersonasDesaparecidas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MenuPrincipalEnPersonasDesaparecidas2ActionPerformed
+        Container container = new Container();
+        this.hide();
+        container.show();
+    }//GEN-LAST:event_button_MenuPrincipalEnPersonasDesaparecidas2ActionPerformed
 
-        Toolkit toolkit = getToolkit();
-        Dimension tamanoPantalla = toolkit.getScreenSize();
-        f.setLocation((tamanoPantalla.width / 2) - (getWidth() / 2), (tamanoPantalla.height / 2) - (getHeight() / 2));
+    private void button_CargarDatosEncontradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_CargarDatosEncontradosActionPerformed
+        cargarDatosDePersonasEncontradas();
+    }//GEN-LAST:event_button_CargarDatosEncontradosActionPerformed
 
-    }
+    private void button_VerFotoInDesaparecidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_VerFotoInDesaparecidosActionPerformed
+        String rutaAArchivo = "C:\\Users\\USER\\Documents\\NetBeansProjects\\FindingPeople\\src\\findingpeople\\desaparecidos\\";
+        rsscalelabel.RSScaleLabel.setScaleLabel(label_Desaparecido, rutaAArchivo + input_rutaFotosInDesaparecidos.getText());
+
+    }//GEN-LAST:event_button_VerFotoInDesaparecidosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -510,49 +493,42 @@ public class Reports extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_CargarDatos;
+    private javax.swing.JButton button_CargarDatosEncontrados;
     private javax.swing.JButton button_MenuPrincipalEnPersonasDesaparecidas;
-    private javax.swing.JButton button_MenuPrincipalEnPersonasDesaparecidas1;
-    private javax.swing.JButton button_MenuPrincipalEnPersonasEncontradas;
+    private javax.swing.JButton button_MenuPrincipalEnPersonasDesaparecidas2;
     private javax.swing.JButton button_PersonasDesaparecidas;
     private javax.swing.JButton button_PersonasEncontradas;
+    private javax.swing.JButton button_VerFotoInDesaparecidos;
     private javax.swing.JTextField input_IDInReports;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField input_IDInReportsEncontrados;
+    private javax.swing.JTextField input_rutaFotosInDesaparecidos;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel label_Desaparecido;
+    private javax.swing.JLabel label_FotoEncontrados;
+    private javax.swing.JLabel label_Id;
+    private javax.swing.JLabel label_RutaFotoInDesaparecidos;
     private javax.swing.JPanel panel_FondoReportes;
     private javax.swing.JPanel panel_PersonasDesaparecidas;
     private javax.swing.JPanel panel_PersonasEncontradas;
     private javax.swing.JPanel panel_Titulos;
     private javax.swing.JTable table_PersonasDesaparecidas;
+    private javax.swing.JTable table_PersonasEncontradas;
     // End of variables declaration//GEN-END:variables
 
     private void cargarDatosDePersonasDesaparecidas() {
 
-    //    https://www.youtube.com/watch?v=MyO_AiU7cEM //Agradecemo despues
-        
+        //    https://www.youtube.com/watch?v=MyO_AiU7cEM //Agradecemo despues
         //validar que el Id no venga vacio para la consulta
         String campo = input_IDInReports.getText();
         String where = "";
         if (!"".equals(campo)) {
 
             where = "WHERE desaparecidos_id = '" + campo + "'";
-            
+
         }
 
         try {
@@ -565,13 +541,13 @@ public class Reports extends javax.swing.JFrame {
             ConexionBD conexion = new ConexionBD();
             Connection con = conexion.conectar();
 
-            String sql = "SELECT desaparecidos_id, nombre, sexo, correo_contacto, telefono_contacto, fecha_registro, foto FROM desaparecidos "+where;
+            String sql = "SELECT desaparecidos_id, nombre, sexo, correo_contacto, telefono_contacto, fecha_registro, foto FROM desaparecidos " + where;
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
             ResultSetMetaData rsmd = rs.getMetaData();
             int cantidadColumnas = rsmd.getColumnCount();
-            
+
             //Colocar las columnas
             modelo.addColumn("Id");
             modelo.addColumn("Nombre");
@@ -580,11 +556,11 @@ public class Reports extends javax.swing.JFrame {
             modelo.addColumn("Telefono_Contacto");
             modelo.addColumn("Fecha_Registro");
             modelo.addColumn("Foto");
-            
+
             //Colocando tamano a nuestras columnas
-            int anchos [] = {50,200,60,200,150,150,250};
-            
-            for(int x = 0;x<cantidadColumnas; x++){
+            int anchos[] = {50, 200, 60, 200, 150, 150, 250};
+
+            for (int x = 0; x < cantidadColumnas; x++) {
                 table_PersonasDesaparecidas.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
             }
 
@@ -606,4 +582,70 @@ public class Reports extends javax.swing.JFrame {
         }
 
     }
+
+    private void cargarDatosDePersonasEncontradas() {
+
+        //    https://www.youtube.com/watch?v=MyO_AiU7cEM //Agradeceme despues
+        //validar que el Id no venga vacio para la consulta
+        String campo = input_IDInReportsEncontrados.getText();
+        String where = "";
+        if (!"".equals(campo)) {
+
+            where = "WHERE encontrados_id = '" + campo + "'";
+
+        }
+
+        try {
+
+            DefaultTableModel modelo = new DefaultTableModel();
+            table_PersonasEncontradas.setModel(modelo);
+
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            ConexionBD conexion = new ConexionBD();
+            Connection con = conexion.conectar();
+
+            String sql = "SELECT encontrados_id, nombre, sexo, correo_contacto, telefono_contacto, fecha_encuentro, lugar_encuentro, foto FROM encontrados " + where;
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int cantidadColumnas = rsmd.getColumnCount();
+
+            //Colocar las columnas
+            modelo.addColumn("Id");
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Sexo");
+            modelo.addColumn("Correo_Contacto");
+            modelo.addColumn("Telefono_Contacto");
+            modelo.addColumn("Fecha_Encuentro");
+            modelo.addColumn("Lugar_Encuentro");
+            modelo.addColumn("Foto");
+
+            //Colocando tamano a nuestras columnas
+            int anchos[] = {50, 200, 60, 200, 150, 150, 150, 250};
+
+            for (int x = 0; x < cantidadColumnas; x++) {
+                table_PersonasEncontradas.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
+            }
+
+            while (rs.next()) {
+
+                Object[] filas = new Object[cantidadColumnas];
+
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                }
+
+                modelo.addRow(filas);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al cargar los datos a la tabla de Encontrados");
+            e.printStackTrace();
+        }
+
+    }
+
 }

@@ -6,6 +6,7 @@
 package findingpeople;
 
 import javax.swing.JFrame;
+import org.opencv.core.Core;
 
 /**
  *
@@ -18,15 +19,24 @@ public class FindingPeople {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        
         Login login = new Login();
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         login.setVisible(true);
        
-       /*Container container = new Container();
+     /*  Container container = new Container();
        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        container.setVisible(true);*/
-
+       
+       /*UploadPeople uploadPeople = new UploadPeople();
+       uploadPeople.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       uploadPeople.setVisible(true);*/
+       
+       /*EncontrarDesaparecido encontrarDesaparecido = new EncontrarDesaparecido();
+       encontrarDesaparecido.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       encontrarDesaparecido.setVisible(true);*/
+    
     }
 
 }

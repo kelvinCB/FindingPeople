@@ -5,6 +5,7 @@
  */
 package findingpeople;
 
+import findingpeople.util.CommonsFrame;
 import findingpeople.util.Fechas;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -19,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import model.MetodosSQL;
 
 /**
@@ -27,9 +29,8 @@ import model.MetodosSQL;
  */
 public class UploadPeople extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
+    String archivo = "";
+
     public UploadPeople() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -42,7 +43,7 @@ public class UploadPeople extends javax.swing.JFrame {
                         "Cerrar",
                         JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 if (x == JOptionPane.YES_OPTION) {
-                   // e.getWindow().dispose();
+                    // e.getWindow().dispose();
                     System.out.println("Cerrar");
                     System.exit(0);
                 } else {
@@ -50,10 +51,9 @@ public class UploadPeople extends javax.swing.JFrame {
                 }
             }
         });
-        setFrameCenter(this);
-        setTitle("KeLiz System - Registro de Desaparecidos");
+        CommonsFrame.setFrameCenter(this);
+        CommonsFrame.frameAtributes(this);
         setIconImage(new ImageIcon(getClass().getResource("/findingpeople/Images/loginImage.png")).getImage());
-        setResizable(false);
     }
 
     //Llamando el modelo
@@ -354,16 +354,19 @@ public class UploadPeople extends javax.swing.JFrame {
     }//GEN-LAST:event_button_MenuPrincipalActionPerformed
 
     private void button_SubirFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SubirFotoActionPerformed
-     
-        JFileChooser jFileChooser = new JFileChooser();
+
+        JFileChooser jFileChooser = new JFileChooser("C:\\Users\\USER\\Documents\\NetBeansProjects\\FindingPeople\\src\\findingpeople\\desaparecidos");
         jFileChooser.setDialogTitle("Escoge una foto de la persona");
-        
-        if(jFileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
-           // File archivo = new File(jFileChooser.getSelectedFile().toString());
-            rsscalelabel.RSScaleLabel.setScaleLabel(label_PersonaDesaparecida, jFileChooser.getSelectedFile().toString());
-            
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "JPG & PNG Images", "jpg", "png");
+        jFileChooser.setFileFilter(filter);
+        if (jFileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            // File archivo = new File(jFileChooser.getSelectedFile().toString());
+            archivo = jFileChooser.getSelectedFile().getName().toString();
+            rsscalelabel.RSScaleLabel.setScaleLabel(label_PersonaDesaparecida, "C:\\Users\\USER\\Documents\\NetBeansProjects\\FindingPeople\\src\\findingpeople\\desaparecidos\\" + archivo);
+            System.out.println(jFileChooser.getSelectedFile().getName().toString());
         }
-        
+
     }//GEN-LAST:event_button_SubirFotoActionPerformed
 
     private void button_RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_RegistroActionPerformed
@@ -374,27 +377,42 @@ public class UploadPeople extends javax.swing.JFrame {
         String sexo = buttonGroup_Sexo.getSelection().getActionCommand();
 
         //Captura la fecha actual 
-      //  String fecha_actual = Fechas.actualDate() + Fechas.actualHour();
+        String fecha_actual = Fechas.actualDate() + " " + Fechas.actualHour();
 
         //Busca una foto en la pc
-        String foto = "Foto de prueba";
+        String nombreDeFoto = input_Nombre.getText();
+        String foto = archivo;
 
         //Guardar en la base de datos los datos obtenidos del uploadPeople y validar que todo está bien
-        int d = metodosSQL.guardarPersonaDesaparecida(input_Nombre.getText(), sexo, input_Correo.getText(), input_Celular.getText(), "prueba", foto);
+        int d = metodosSQL.guardarPersonaDesaparecida(input_Nombre.getText(), sexo, input_Correo.getText(), input_Celular.getText(), fecha_actual, foto);
 
         if (d > 0) {
             JOptionPane.showMessageDialog(this, "Persona Registrada Correctamente");
-            
+
             //Buscar persona registrada y anadirla al reporte de desaparecidos
             String datosDePersonasDesaparecidas[] = MetodosSQL.buscarDatosEnDesaparecidos(input_Nombre.getText());
-            for(String in: datosDePersonasDesaparecidas) System.out.println(in);
+            for (String in : datosDePersonasDesaparecidas) {
+                System.out.println(in);
+            }
+
+            //Dirigirse a encontrar esa persona y avisarle al usuario
+            EncontrarDesaparecido encontrarDesaparecido = new EncontrarDesaparecido();
+            this.hide();
+            encontrarDesaparecido.show();
+            rsscalelabel.RSScaleLabel.setScaleLabel(EncontrarDesaparecido.label_PersonaDesaparecida, "C:\\Users\\USER\\Documents\\NetBeansProjects\\FindingPeople\\src\\findingpeople\\desaparecidos\\" + archivo);
+            EncontrarDesaparecido.label_NombreDesaparecido.setText(input_Nombre.getText());
+
         } else {
             JOptionPane.showMessageDialog(this, "Error al registra la persona");
         }
     }//GEN-LAST:event_button_RegistroActionPerformed
 
     private void button_TomarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_TomarFotoActionPerformed
-        // TODO add your handling code here:
+
+        Recognizer recognizer = new Recognizer();
+        this.hide();
+        recognizer.show();
+
     }//GEN-LAST:event_button_TomarFotoActionPerformed
 
     private void input_CorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_CorreoActionPerformed
@@ -420,14 +438,6 @@ public class UploadPeople extends javax.swing.JFrame {
     private void input_CelularKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_input_CelularKeyReleased
         validar();
     }//GEN-LAST:event_input_CelularKeyReleased
-
-    private void setFrameCenter(JFrame f) {
-
-        Toolkit toolkit = getToolkit();
-        Dimension tamanoPantalla = toolkit.getScreenSize();
-        f.setLocation((tamanoPantalla.width / 2) - (getWidth() / 2), (tamanoPantalla.height / 2) - (getHeight() / 2));
-
-    }
 
     /**
      * @param args the command line arguments
@@ -519,7 +529,7 @@ public class UploadPeople extends javax.swing.JFrame {
     private javax.swing.JLabel label_Celular;
     private javax.swing.JLabel label_Correo;
     private javax.swing.JLabel label_Foto;
-    private javax.swing.JLabel label_PersonaDesaparecida;
+    public static javax.swing.JLabel label_PersonaDesaparecida;
     private javax.swing.JLabel label_RegistroDesaparecidos;
     private javax.swing.JLabel label_Sexo;
     private javax.swing.JLabel lblNombre;

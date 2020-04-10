@@ -6,6 +6,7 @@
 package findingpeople.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -18,14 +19,14 @@ public class Fechas {
 
 	public static String actualDate(){
 
-		Fechas date = new Fechas();
+		Date date = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		return dateFormat.format(date);
 	}
 
 	// Devuelve la hora actual
 	public static String  actualHour(){
-		Fechas hora = new Fechas();
+		Date hora = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 		return dateFormat.format(hora);
 

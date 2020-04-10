@@ -17,17 +17,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import org.opencv.videoio.VideoCapture;
 
 /**
  *
  * @author USER
  */
-public class Container extends javax.swing.JFrame {
+public class ContainerUsuarios extends javax.swing.JFrame {
 
     /**
      * Creates new form Container
      */
-    public Container() {
+    public ContainerUsuarios() {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
@@ -50,8 +51,11 @@ public class Container extends javax.swing.JFrame {
         CommonsFrame.setFrameCenter(this);
         CommonsFrame.frameAtributes(this);
         setIconImage(new ImageIcon(getClass().getResource("/findingpeople/Images/loginImage.png")).getImage());
+
+        //  setExtendedState(MAXIMIZED_BOTH);
         button_RegistrarPersonaDesaparecida.setIcon(setIconInButtonPresioned("Images/EncontrarPersonaImagen.png", button_RegistrarPersonaDesaparecida, 20, 20));
         button_RegistrarPersonaDesaparecida.setIcon(setIconInButton("Images/EncontrarPersonaImagen.png", button_RegistrarPersonaDesaparecida));
+
     }
 
     public void setFrameCenter(JFrame f) {
@@ -102,7 +106,6 @@ public class Container extends javax.swing.JFrame {
     private void initComponents() {
 
         panel_Container = new javax.swing.JPanel();
-        button_Reportes = new javax.swing.JButton();
         panel_EncontrarPersonasDesaparecidas = new javax.swing.JPanel();
         label_EncontrarPersonaDesaparecida = new javax.swing.JLabel();
         button_EncontrarPersonaDesaparecida = new javax.swing.JButton();
@@ -118,8 +121,7 @@ public class Container extends javax.swing.JFrame {
         button_RegistrarPersonaDesaparecida = new javax.swing.JButton();
         label_RegistrarPersonaDesaparecida = new javax.swing.JLabel();
         label_MenuPrincipal = new javax.swing.JLabel();
-        button_Accesos = new javax.swing.JButton();
-        label_AdministradorDeBBDD = new javax.swing.JLabel();
+        label_UsuarioDeBBDD = new javax.swing.JLabel();
 
         setMinimumSize(null);
 
@@ -128,20 +130,6 @@ public class Container extends javax.swing.JFrame {
         panel_Container.setMaximumSize(null);
         panel_Container.setPreferredSize(new java.awt.Dimension(1000, 650));
         panel_Container.setLayout(null);
-
-        button_Reportes.setBackground(new java.awt.Color(4, 96, 194));
-        button_Reportes.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        button_Reportes.setForeground(new java.awt.Color(225, 225, 225));
-        button_Reportes.setActionCommand("Reportes");
-        button_Reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        button_Reportes.setLabel("Reportes");
-        button_Reportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_ReportesActionPerformed(evt);
-            }
-        });
-        panel_Container.add(button_Reportes);
-        button_Reportes.setBounds(830, 180, 130, 60);
 
         panel_EncontrarPersonasDesaparecidas.setBackground(new java.awt.Color(4, 96, 194));
 
@@ -183,7 +171,7 @@ public class Container extends javax.swing.JFrame {
         );
 
         panel_Container.add(panel_EncontrarPersonasDesaparecidas);
-        panel_EncontrarPersonasDesaparecidas.setBounds(290, 180, 260, 220);
+        panel_EncontrarPersonasDesaparecidas.setBounds(370, 180, 260, 220);
 
         panel_SimulacionEnTiempoReal.setBackground(new java.awt.Color(4, 96, 194));
 
@@ -225,7 +213,7 @@ public class Container extends javax.swing.JFrame {
         label_SimulacionEnTiempoReal.getAccessibleContext().setAccessibleName("Simulacion en Tiempo Real");
 
         panel_Container.add(panel_SimulacionEnTiempoReal);
-        panel_SimulacionEnTiempoReal.setBounds(560, 180, 240, 220);
+        panel_SimulacionEnTiempoReal.setBounds(710, 180, 240, 220);
 
         button_CerrarSesion.setBackground(new java.awt.Color(4, 96, 194));
         button_CerrarSesion.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -237,7 +225,7 @@ public class Container extends javax.swing.JFrame {
             }
         });
         panel_Container.add(button_CerrarSesion);
-        button_CerrarSesion.setBounds(830, 340, 130, 60);
+        button_CerrarSesion.setBounds(900, 40, 130, 60);
 
         panel_RegistrarPersonasDesaparecidas.setBackground(new java.awt.Color(4, 96, 194));
         panel_RegistrarPersonasDesaparecidas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -338,27 +326,13 @@ public class Container extends javax.swing.JFrame {
         label_MenuPrincipal.setForeground(new java.awt.Color(225, 255, 255));
         label_MenuPrincipal.setText("Menú Principal");
         panel_Container.add(label_MenuPrincipal);
-        label_MenuPrincipal.setBounds(400, 40, 310, 50);
+        label_MenuPrincipal.setBounds(400, 50, 310, 50);
 
-        button_Accesos.setBackground(new java.awt.Color(4, 96, 194));
-        button_Accesos.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        button_Accesos.setForeground(new java.awt.Color(225, 225, 225));
-        button_Accesos.setText("Accesos");
-        button_Accesos.setActionCommand("Reportes");
-        button_Accesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        button_Accesos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_AccesosActionPerformed(evt);
-            }
-        });
-        panel_Container.add(button_Accesos);
-        button_Accesos.setBounds(830, 260, 130, 60);
-
-        label_AdministradorDeBBDD.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        label_AdministradorDeBBDD.setForeground(new java.awt.Color(225, 225, 225));
-        label_AdministradorDeBBDD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        panel_Container.add(label_AdministradorDeBBDD);
-        label_AdministradorDeBBDD.setBounds(340, 550, 290, 29);
+        label_UsuarioDeBBDD.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        label_UsuarioDeBBDD.setForeground(new java.awt.Color(225, 225, 225));
+        label_UsuarioDeBBDD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        panel_Container.add(label_UsuarioDeBBDD);
+        label_UsuarioDeBBDD.setBounds(380, 550, 320, 29);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -397,16 +371,12 @@ public class Container extends javax.swing.JFrame {
     }//GEN-LAST:event_button_EncontrarPersonaDesaparecidaActionPerformed
 
     private void button_SimulacionEnTiempoRealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SimulacionEnTiempoRealActionPerformed
-        TiempoReal tiempoReal = new TiempoReal();
-        this.hide();
-        tiempoReal.show();
-    }//GEN-LAST:event_button_SimulacionEnTiempoRealActionPerformed
 
-    private void button_ReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ReportesActionPerformed
-        Reports reports = new Reports();
-        this.hide();
-        reports.show();
-    }//GEN-LAST:event_button_ReportesActionPerformed
+ TiempoReal tiempoReal = new TiempoReal();
+ this.hide();
+ tiempoReal.show();
+        
+    }//GEN-LAST:event_button_SimulacionEnTiempoRealActionPerformed
 
     private void button_CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_CerrarSesionActionPerformed
         int logout = JOptionPane.showConfirmDialog(null, "¿Está seguro de cerrar la sesión?",
@@ -423,12 +393,6 @@ public class Container extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_button_CerrarSesionActionPerformed
-
-    private void button_AccesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_AccesosActionPerformed
-        Accesos access = new Accesos();
-        this.hide();
-        access.show();
-    }//GEN-LAST:event_button_AccesosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -447,33 +411,31 @@ public class Container extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Container.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContainerUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Container.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContainerUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Container.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContainerUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Container.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContainerUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Container().setVisible(true);
+                new ContainerUsuarios().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_Accesos;
     private javax.swing.JButton button_CerrarSesion;
     private javax.swing.JButton button_EncontrarPersonaDesaparecida;
     private javax.swing.JButton button_RegistrarPersonaDesaparecida;
-    private javax.swing.JButton button_Reportes;
     private javax.swing.JButton button_SimulacionEnTiempoReal;
     private javax.swing.JPanel jPanel4;
-    public static javax.swing.JLabel label_AdministradorDeBBDD;
     private javax.swing.JLabel label_EncontrarPersonaDesaparecida;
     private javax.swing.JLabel label_EncontrarPersonaDesaparecida1;
     private javax.swing.JLabel label_ImagenFondo1;
@@ -481,6 +443,7 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JLabel label_MenuPrincipal;
     private javax.swing.JLabel label_RegistrarPersonaDesaparecida;
     private javax.swing.JLabel label_SimulacionEnTiempoReal;
+    public static javax.swing.JLabel label_UsuarioDeBBDD;
     private javax.swing.JPanel panel_Container;
     private javax.swing.JPanel panel_EncontrarPersonasDesaparecidas;
     private javax.swing.JPanel panel_RegistrarPersonasDesaparecidas;

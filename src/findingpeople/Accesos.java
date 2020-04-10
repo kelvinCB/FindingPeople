@@ -5,14 +5,21 @@
  */
 package findingpeople;
 
+import findingpeople.util.CommonsFrame;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.ConexionBD;
 
 /**
  *
@@ -27,26 +34,26 @@ public class Accesos extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        this.addWindowListener(new WindowAdapter(){
-                
-                @Override
-                public void windowClosing(WindowEvent e){
-                    int x = JOptionPane.showConfirmDialog(null, "¿Realmemte quiere salir de KeLiz System?",
-                                                          "Cerrar",
-                                                          JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-                    if(x == JOptionPane.YES_OPTION){
-                        e.getWindow().dispose();
-                        System.out.println("Cerrar");
-                    }else if(x == JOptionPane.NO_OPTION){
-                        System.out.println("Seguimo'");
-                    }
+        this.addWindowListener(new WindowAdapter() {
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int x = JOptionPane.showConfirmDialog(null, "¿Realmemte quiere salir de KeLiz System?",
+                        "Cerrar",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                if (x == JOptionPane.YES_OPTION) {
+                    e.getWindow().dispose();
+                    System.out.println("Cerrar");
+                } else if (x == JOptionPane.NO_OPTION) {
+                    System.out.println("Seguimo'");
                 }
+            }
         });
-        setTitle("KeLiz System - Reportes");
+
         setIconImage(new ImageIcon(getClass().getResource("/findingpeople/Images/loginImage.png")).getImage());
-        this.setResizable(false);
-        setFrameCenter(this);
-        panel_Usuarios.hide();
+        CommonsFrame.setFrameCenter(this);
+        CommonsFrame.frameAtributes(this);
+        panel_Administradores.hide();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
@@ -65,12 +72,20 @@ public class Accesos extends javax.swing.JFrame {
         button_Administradores = new javax.swing.JButton();
         button_Usuarios = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        panel_Administradores = new javax.swing.JPanel();
-        label_Administradores = new javax.swing.JLabel();
-        button_MenuPrincipalEnAdministradores = new javax.swing.JButton();
         panel_Usuarios = new javax.swing.JPanel();
-        label_PersonasEncontradas = new javax.swing.JLabel();
         button_MenuPrincipalEnUsuarios = new javax.swing.JButton();
+        input_NombreInAccesosUsuarios = new javax.swing.JTextField();
+        label_NombreInUsuarios = new javax.swing.JLabel();
+        button_CargarDatosUsuarios = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table_Usuarios = new javax.swing.JTable();
+        panel_Administradores = new javax.swing.JPanel();
+        button_MenuPrincipalEnAdministradores1 = new javax.swing.JButton();
+        input_NombreInAccesosAdministradores = new javax.swing.JTextField();
+        label_Nombre = new javax.swing.JLabel();
+        button_CargarDatosAdministradores = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        table_Administradores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,7 +94,7 @@ public class Accesos extends javax.swing.JFrame {
         button_Administradores.setBackground(new java.awt.Color(4, 96, 194));
         button_Administradores.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         button_Administradores.setForeground(new java.awt.Color(255, 255, 255));
-        button_Administradores.setText("Administradores");
+        button_Administradores.setText("Usuarios");
         button_Administradores.setBorder(null);
         button_Administradores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +105,7 @@ public class Accesos extends javax.swing.JFrame {
         button_Usuarios.setBackground(new java.awt.Color(0, 204, 102));
         button_Usuarios.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         button_Usuarios.setForeground(new java.awt.Color(255, 255, 255));
-        button_Usuarios.setText("Usuarios");
+        button_Usuarios.setText("Administradores");
         button_Usuarios.setBorder(null);
         button_Usuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,50 +130,7 @@ public class Accesos extends javax.swing.JFrame {
 
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel_Administradores.setBackground(new java.awt.Color(37, 47, 65));
-
-        label_Administradores.setText("Aqui va la lista de usuarios administradores");
-
-        button_MenuPrincipalEnAdministradores.setBackground(new java.awt.Color(4, 96, 194));
-        button_MenuPrincipalEnAdministradores.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        button_MenuPrincipalEnAdministradores.setForeground(new java.awt.Color(225, 225, 225));
-        button_MenuPrincipalEnAdministradores.setText("Menu Principal");
-        button_MenuPrincipalEnAdministradores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_MenuPrincipalEnAdministradoresActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panel_AdministradoresLayout = new javax.swing.GroupLayout(panel_Administradores);
-        panel_Administradores.setLayout(panel_AdministradoresLayout);
-        panel_AdministradoresLayout.setHorizontalGroup(
-            panel_AdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_AdministradoresLayout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
-                .addGroup(panel_AdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_AdministradoresLayout.createSequentialGroup()
-                        .addComponent(button_MenuPrincipalEnAdministradores)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_AdministradoresLayout.createSequentialGroup()
-                        .addComponent(label_Administradores, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(214, 214, 214))))
-        );
-        panel_AdministradoresLayout.setVerticalGroup(
-            panel_AdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_AdministradoresLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(button_MenuPrincipalEnAdministradores)
-                .addGap(73, 73, 73)
-                .addComponent(label_Administradores, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
-        );
-
-        jLayeredPane1.add(panel_Administradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 809, -1));
-
         panel_Usuarios.setBackground(new java.awt.Color(37, 47, 65));
-
-        label_PersonasEncontradas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_PersonasEncontradas.setText("Aqui va la lista de usuarios");
 
         button_MenuPrincipalEnUsuarios.setBackground(new java.awt.Color(4, 96, 194));
         button_MenuPrincipalEnUsuarios.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
@@ -170,17 +142,75 @@ public class Accesos extends javax.swing.JFrame {
             }
         });
 
+        input_NombreInAccesosUsuarios.setToolTipText("");
+        input_NombreInAccesosUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                input_NombreInAccesosUsuariosActionPerformed(evt);
+            }
+        });
+
+        label_NombreInUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label_NombreInUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        label_NombreInUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label_NombreInUsuarios.setText("NOMBRE:");
+
+        button_CargarDatosUsuarios.setText("Cargar Datos");
+        button_CargarDatosUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_CargarDatosUsuariosActionPerformed(evt);
+            }
+        });
+
+        table_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Usuario", "Contraseña", "Telefono", "Sexo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(table_Usuarios);
+
         javax.swing.GroupLayout panel_UsuariosLayout = new javax.swing.GroupLayout(panel_Usuarios);
         panel_Usuarios.setLayout(panel_UsuariosLayout);
         panel_UsuariosLayout.setHorizontalGroup(
             panel_UsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_UsuariosLayout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(label_PersonasEncontradas, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(271, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_UsuariosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(button_MenuPrincipalEnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(panel_UsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_UsuariosLayout.createSequentialGroup()
+                        .addGap(0, 674, Short.MAX_VALUE)
+                        .addComponent(button_MenuPrincipalEnUsuarios))
+                    .addGroup(panel_UsuariosLayout.createSequentialGroup()
+                        .addComponent(label_NombreInUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(input_NombreInAccesosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(button_CargarDatosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(300, 300, 300))
+                    .addComponent(jScrollPane3))
                 .addContainerGap())
         );
         panel_UsuariosLayout.setVerticalGroup(
@@ -188,12 +218,114 @@ public class Accesos extends javax.swing.JFrame {
             .addGroup(panel_UsuariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(button_MenuPrincipalEnUsuarios)
-                .addGap(92, 92, 92)
-                .addComponent(label_PersonasEncontradas, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_UsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_UsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(label_NombreInUsuarios)
+                        .addComponent(input_NombreInAccesosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(button_CargarDatosUsuarios))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(panel_Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLayeredPane1.add(panel_Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 809, -1));
+
+        panel_Administradores.setBackground(new java.awt.Color(37, 47, 65));
+
+        button_MenuPrincipalEnAdministradores1.setBackground(new java.awt.Color(4, 96, 194));
+        button_MenuPrincipalEnAdministradores1.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        button_MenuPrincipalEnAdministradores1.setForeground(new java.awt.Color(225, 225, 225));
+        button_MenuPrincipalEnAdministradores1.setText("Menu Principal");
+        button_MenuPrincipalEnAdministradores1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_MenuPrincipalEnAdministradores1ActionPerformed(evt);
+            }
+        });
+
+        input_NombreInAccesosAdministradores.setToolTipText("");
+
+        label_Nombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label_Nombre.setForeground(new java.awt.Color(255, 255, 255));
+        label_Nombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label_Nombre.setText("NOMBRE:");
+
+        button_CargarDatosAdministradores.setText("Cargar Datos");
+        button_CargarDatosAdministradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_CargarDatosAdministradoresActionPerformed(evt);
+            }
+        });
+
+        table_Administradores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Usuario", "Contraseña", "Telefono", "Sexo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(table_Administradores);
+
+        javax.swing.GroupLayout panel_AdministradoresLayout = new javax.swing.GroupLayout(panel_Administradores);
+        panel_Administradores.setLayout(panel_AdministradoresLayout);
+        panel_AdministradoresLayout.setHorizontalGroup(
+            panel_AdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_AdministradoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_AdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_AdministradoresLayout.createSequentialGroup()
+                        .addGap(0, 674, Short.MAX_VALUE)
+                        .addComponent(button_MenuPrincipalEnAdministradores1))
+                    .addGroup(panel_AdministradoresLayout.createSequentialGroup()
+                        .addComponent(label_Nombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(input_NombreInAccesosAdministradores, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(button_CargarDatosAdministradores, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(300, 300, 300))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        panel_AdministradoresLayout.setVerticalGroup(
+            panel_AdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_AdministradoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(button_MenuPrincipalEnAdministradores1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_AdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_AdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(label_Nombre)
+                        .addComponent(input_NombreInAccesosAdministradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(button_CargarDatosAdministradores))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(121, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(panel_Administradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout panel_FondoAccesosLayout = new javax.swing.GroupLayout(panel_FondoAccesos);
         panel_FondoAccesos.setLayout(panel_FondoAccesosLayout);
@@ -229,30 +361,42 @@ public class Accesos extends javax.swing.JFrame {
     private void button_AdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_AdministradoresActionPerformed
         button_Administradores.setFont(new Font("Tahoma", 1, 22));
         button_Usuarios.setFont(new Font("Tahoma", 1, 20));
-        panel_Administradores.show();
-        panel_Usuarios.hide();
+        panel_Usuarios.show();
+        panel_Administradores.hide();
     }//GEN-LAST:event_button_AdministradoresActionPerformed
 
     private void button_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_UsuariosActionPerformed
 
         button_Administradores.setFont(new Font("Tahoma", 1, 20));
         button_Usuarios.setFont(new Font("Tahoma", 1, 22));
-        panel_Administradores.hide();
-        panel_Usuarios.show();
+        panel_Usuarios.hide();
+        panel_Administradores.show();
 
     }//GEN-LAST:event_button_UsuariosActionPerformed
-
-    private void button_MenuPrincipalEnAdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MenuPrincipalEnAdministradoresActionPerformed
-        Container container = new Container();
-        this.hide();
-        container.show();
-    }//GEN-LAST:event_button_MenuPrincipalEnAdministradoresActionPerformed
 
     private void button_MenuPrincipalEnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MenuPrincipalEnUsuariosActionPerformed
         Container container = new Container();
         this.hide();
         container.show();
     }//GEN-LAST:event_button_MenuPrincipalEnUsuariosActionPerformed
+
+    private void button_CargarDatosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_CargarDatosUsuariosActionPerformed
+        cargarDatosDeUsuarios();
+    }//GEN-LAST:event_button_CargarDatosUsuariosActionPerformed
+
+    private void button_MenuPrincipalEnAdministradores1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MenuPrincipalEnAdministradores1ActionPerformed
+        Container container = new Container();
+        this.hide();
+        container.show();
+    }//GEN-LAST:event_button_MenuPrincipalEnAdministradores1ActionPerformed
+
+    private void button_CargarDatosAdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_CargarDatosAdministradoresActionPerformed
+        cargarDatosDeAdministradores();
+    }//GEN-LAST:event_button_CargarDatosAdministradoresActionPerformed
+
+    private void input_NombreInAccesosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_NombreInAccesosUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_input_NombreInAccesosUsuariosActionPerformed
 
     private void setFrameCenter(JFrame f) {
 
@@ -299,15 +443,148 @@ public class Accesos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Administradores;
-    private javax.swing.JButton button_MenuPrincipalEnAdministradores;
+    private javax.swing.JButton button_CargarDatosAdministradores;
+    private javax.swing.JButton button_CargarDatosUsuarios;
+    private javax.swing.JButton button_MenuPrincipalEnAdministradores1;
     private javax.swing.JButton button_MenuPrincipalEnUsuarios;
     private javax.swing.JButton button_Usuarios;
+    private javax.swing.JTextField input_NombreInAccesosAdministradores;
+    private javax.swing.JTextField input_NombreInAccesosUsuarios;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JLabel label_Administradores;
-    private javax.swing.JLabel label_PersonasEncontradas;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel label_Nombre;
+    private javax.swing.JLabel label_NombreInUsuarios;
     private javax.swing.JPanel panel_Administradores;
     private javax.swing.JPanel panel_FondoAccesos;
     private javax.swing.JPanel panel_Titulos;
     private javax.swing.JPanel panel_Usuarios;
+    private javax.swing.JTable table_Administradores;
+    private javax.swing.JTable table_Usuarios;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatosDeAdministradores() {
+
+        //    https://www.youtube.com/watch?v=MyO_AiU7cEM //Agradeceme despues
+        //validar que el Id no venga vacio para la consulta
+        String campo = input_NombreInAccesosAdministradores.getText();
+        String where = "";
+        if (!"".equals(campo)) {
+
+            where = "WHERE nombre = '" + campo + "'";
+
+        }
+
+        try {
+
+            DefaultTableModel modelo = new DefaultTableModel();
+            table_Administradores.setModel(modelo);
+
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            ConexionBD conexion = new ConexionBD();
+            Connection con = conexion.conectar();
+
+            String sql = "SELECT nombre, usuario, contrasena, telefono, sexo FROM administradores " + where;
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int cantidadColumnas = rsmd.getColumnCount();
+
+            //Colocar las columnas
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Usuario");
+            modelo.addColumn("Contraseña");
+            modelo.addColumn("Telefono");
+            modelo.addColumn("Sexo");
+
+            //Colocando tamano a nuestras columnas
+            int anchos[] = {200, 150, 200, 150, 60};
+
+            for (int x = 0; x < cantidadColumnas; x++) {
+                table_Administradores.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
+            }
+
+            while (rs.next()) {
+
+                Object[] filas = new Object[cantidadColumnas];
+
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                }
+
+                modelo.addRow(filas);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al cargar los datos a la tabla de Administradores");
+            e.printStackTrace();
+        }
+
+    }
+
+    private void cargarDatosDeUsuarios() {
+
+        //    https://www.youtube.com/watch?v=MyO_AiU7cEM //Agradeceme despues
+        //validar que el Id no venga vacio para la consulta
+        String campo = input_NombreInAccesosUsuarios.getText();
+        String where = "";
+        if (!"".equals(campo)) {
+
+            where = "WHERE nombre = '" + campo + "'";
+
+        }
+
+        try {
+
+            DefaultTableModel modelo = new DefaultTableModel();
+            table_Usuarios.setModel(modelo);
+
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            ConexionBD conexion = new ConexionBD();
+            Connection con = conexion.conectar();
+
+            String sql = "SELECT nombre, usuario, contrasena, telefono, sexo FROM usuarios " + where;
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int cantidadColumnas = rsmd.getColumnCount();
+
+            //Colocar las columnas
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Usuario");
+            modelo.addColumn("Contraseña");
+            modelo.addColumn("Telefono");
+            modelo.addColumn("Sexo");
+
+            //Colocando tamano a nuestras columnas
+            int anchos[] = {200, 150, 200, 150, 60};
+
+            for (int x = 0; x < cantidadColumnas; x++) {
+                table_Usuarios.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
+            }
+
+            while (rs.next()) {
+
+                Object[] filas = new Object[cantidadColumnas];
+
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                }
+
+                modelo.addRow(filas);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al cargar los datos a la tabla de Usuarios");
+            e.printStackTrace();
+        }
+
+    }
+
 }

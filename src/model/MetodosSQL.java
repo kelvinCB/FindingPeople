@@ -49,7 +49,36 @@ public class MetodosSQL {
         return resultado;
     }
 
-    public static String buscarNombre(String usuario) {
+        public int guardarAdmin(String nombre, String usuario, String contrasena, String telefono, String sexo) {
+
+        int resultado = 0;
+        Connection conexion = null;
+
+        String sentencia_guardar = ("INSERT INTO administradores (nombre,usuario,contrasena,telefono,sexo) VALUES (?,?,?,?,?)");
+
+        try {
+            conexion = ConexionBD.conectar();
+            sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
+            sentencia_preparada.setString(1, nombre);
+            sentencia_preparada.setString(2, usuario);
+            sentencia_preparada.setString(3, contrasena);
+            sentencia_preparada.setString(4, telefono);
+            sentencia_preparada.setString(5, sexo);
+
+            resultado = sentencia_preparada.executeUpdate();
+            sentencia_preparada.close();
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error al insertar datos a la BD");
+            e.printStackTrace();
+        }
+
+        return resultado;
+    }
+    
+    
+    //busca el nombre de un usuario
+    public static String buscarNombreDeUsuario(String usuario) {
         String busqueda_nombre = null;
         Connection conexion = null;
         try {
@@ -69,7 +98,30 @@ public class MetodosSQL {
 
         return busqueda_nombre;
     }
+    
+       //busca el nombre de un administrador
+    public static String buscarNombreDeAdministrador(String usuario) {
+        String busqueda_nombre = null;
+        Connection conexion = null;
+        try {
+            conexion = ConexionBD.conectar();
+            String sentencia_buscar = ("SELECT nombre FROM administradores WHERE usuario = '" + usuario + "'");
+            sentencia_preparada = conexion.prepareStatement(sentencia_buscar);
+            resultados = sentencia_preparada.executeQuery();
+            if (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                busqueda_nombre = nombre;
+            }
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error en el método buscarNombreDeAdministrador");
+            e.printStackTrace();
+        }
 
+        return busqueda_nombre;
+    }
+
+    //busca un usuario registrado
     public static String busquedaDeUsuarioRegistrado(String usuario, String contrasena) {
 
         String busqueda_usuario = null;
@@ -88,6 +140,33 @@ public class MetodosSQL {
             conexion.close();
         } catch (Exception e) {
             System.out.println("Error en el metodo de busquedaDeUsuario");
+            e.printStackTrace();
+        }
+        return busqueda_usuario;
+    }
+    
+    
+    
+    //busca un administrador registrado
+    
+        public static String busquedaDeAdministradorRegistrado(String usuario, String contrasena) {
+
+        String busqueda_usuario = null;
+        Connection conexion = null;
+
+        try {
+            conexion = ConexionBD.conectar();
+            String sentencia_buscar_usuario = ("SELECT nombre,usuario,contrasena FROM administradores WHERE usuario = '" + usuario + "' && contrasena = '" + contrasena + "'");
+            sentencia_preparada = conexion.prepareStatement(sentencia_buscar_usuario);
+            resultados = sentencia_preparada.executeQuery();
+            if (resultados.next()) {
+                busqueda_usuario = "Administrador Encontrado";
+            } else {
+                busqueda_usuario = "Administrador No Encontrado";
+            }
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error en el metodo de busqueda de administrador");
             e.printStackTrace();
         }
         return busqueda_usuario;
